@@ -18,6 +18,7 @@ class CanadaTaxCourtOutcomesLegalBenchClassification(AbsTaskClassification):
             "path": "nguha/legalbench",
             "name": "canada_tax_court_outcomes",
             "revision": "12ca3b695563788fead87a982ad1a068284413f4",
+            "trust_remote_code": True,
         },
         type="Classification",
         category="s2s",
@@ -51,9 +52,7 @@ class CanadaTaxCourtOutcomesLegalBenchClassification(AbsTaskClassification):
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class ContractNLIConfidentialityOfAgreementLegalBenchClassification(
-    AbsTaskClassification
-):
+class ContractNLIConfidentialityOfAgreementLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="ContractNLIConfidentialityOfAgreementLegalBenchClassification",
         description="This task is a subset of ContractNLI, and consists of determining whether a clause from an NDA provides that the Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
@@ -100,9 +99,7 @@ class ContractNLIConfidentialityOfAgreementLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -154,9 +151,7 @@ class ContractNLIExplicitIdentificationLegalBenchClassification(AbsTaskClassific
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -210,9 +205,7 @@ class ContractNLIInclusionOfVerballyConveyedInformationLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -264,9 +257,7 @@ class ContractNLILimitedUseLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -318,16 +309,12 @@ class ContractNLINoLicensingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class ContractNLINoticeOnCompelledDisclosureLegalBenchClassification(
-    AbsTaskClassification
-):
+class ContractNLINoticeOnCompelledDisclosureLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="ContractNLINoticeOnCompelledDisclosureLegalBenchClassification",
         description="This task is a subset of ContractNLI, and consists of determining whether a clause from an NDA clause provides that the Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
@@ -374,9 +361,7 @@ class ContractNLINoticeOnCompelledDisclosureLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -430,9 +415,7 @@ class ContractNLIPermissibleAcquirementOfSimilarInformationLegalBenchClassificat
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -484,9 +467,7 @@ class ContractNLIPermissibleCopyLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -540,16 +521,12 @@ class ContractNLIPermissibleDevelopmentOfSimilarInformationLegalBenchClassificat
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class ContractNLIPermissiblePostAgreementPossessionLegalBenchClassification(
-    AbsTaskClassification
-):
+class ContractNLIPermissiblePostAgreementPossessionLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="ContractNLIPermissiblePostAgreementPossessionLegalBenchClassification",
         description="This task is a subset of ContractNLI, and consists of determining whether a clause from an NDA clause provides that the Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
@@ -596,16 +573,12 @@ class ContractNLIPermissiblePostAgreementPossessionLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class ContractNLIReturnOfConfidentialInformationLegalBenchClassification(
-    AbsTaskClassification
-):
+class ContractNLIReturnOfConfidentialInformationLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="ContractNLIReturnOfConfidentialInformationLegalBenchClassification",
         description="This task is a subset of ContractNLI, and consists of determining whether a clause from an NDA clause provides that the Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
@@ -652,9 +625,7 @@ class ContractNLIReturnOfConfidentialInformationLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -706,9 +677,7 @@ class ContractNLISharingWithEmployeesLegalBenchClassification(AbsTaskClassificat
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -760,9 +729,7 @@ class ContractNLISharingWithThirdPartiesLegalBenchClassification(AbsTaskClassifi
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -814,9 +781,7 @@ class ContractNLISurvivalOfObligationsLegalBenchClassification(AbsTaskClassifica
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -863,9 +828,7 @@ class CorporateLobbyingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -933,9 +896,7 @@ class CUADAffiliateLicenseLicenseeLegalBenchClassification(AbsTaskClassification
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -988,9 +949,7 @@ class CUADAffiliateLicenseLicensorLegalBenchClassification(AbsTaskClassification
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1043,9 +1002,7 @@ class CUADAntiAssignmentLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1098,9 +1055,7 @@ class CUADAuditRightsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1153,9 +1108,7 @@ class CUADCapOnLiabilityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1208,16 +1161,12 @@ class CUADChangeOfControlLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class CUADCompetitiveRestrictionExceptionLegalBenchClassification(
-    AbsTaskClassification
-):
+class CUADCompetitiveRestrictionExceptionLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="CUADCompetitiveRestrictionExceptionLegalBenchClassification",
         description="This task was constructed from the CUAD dataset. It consists of determining if the clause mentions exceptions or carveouts to Non-Compete, Exclusivity and No-Solicit of Customers.",
@@ -1265,9 +1214,7 @@ class CUADCompetitiveRestrictionExceptionLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1320,9 +1267,7 @@ class CUADCovenantNotToSueLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1375,9 +1320,7 @@ class CUADEffectiveDateLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1430,9 +1373,7 @@ class CUADExclusivityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1485,9 +1426,7 @@ class CUADExpirationDateLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1540,9 +1479,7 @@ class CUADGoverningLawLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1595,9 +1532,7 @@ class CUADInsuranceLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1650,9 +1585,7 @@ class CUADIPOwnershipAssignmentLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1705,9 +1638,7 @@ class CUADIrrevocableOrPerpetualLicenseLegalBenchClassification(AbsTaskClassific
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1760,9 +1691,7 @@ class CUADJointIPOwnershipLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1815,9 +1744,7 @@ class CUADLicenseGrantLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1870,9 +1797,7 @@ class CUADLiquidatedDamagesLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1925,9 +1850,7 @@ class CUADMinimumCommitmentLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -1980,9 +1903,7 @@ class CUADMostFavoredNationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2035,9 +1956,7 @@ class CUADNoSolicitOfCustomersLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2090,9 +2009,7 @@ class CUADNoSolicitOfEmployeesLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2145,9 +2062,7 @@ class CUADNonCompeteLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2200,9 +2115,7 @@ class CUADNonDisparagementLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2255,9 +2168,7 @@ class CUADNonTransferableLicenseLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2310,9 +2221,7 @@ class CUADNoticePeriodToTerminateRenewalLegalBenchClassification(AbsTaskClassifi
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2365,9 +2274,7 @@ class CUADPostTerminationServicesLegalBenchClassification(AbsTaskClassification)
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2420,9 +2327,7 @@ class CUADPriceRestrictionsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2475,9 +2380,7 @@ class CUADRenewalTermLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2530,9 +2433,7 @@ class CUADRevenueProfitSharingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2585,9 +2486,7 @@ class CUADRofrRofoRofnLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2640,9 +2539,7 @@ class CUADSourceCodeEscrowLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2695,9 +2592,7 @@ class CUADTerminationForConvenienceLegalBenchClassification(AbsTaskClassificatio
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2750,9 +2645,7 @@ class CUADThirdPartyBeneficiaryLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2805,9 +2698,7 @@ class CUADUncappedLiabilityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2860,9 +2751,7 @@ class CUADUnlimitedAllYouCanEatLicenseLegalBenchClassification(AbsTaskClassifica
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2915,9 +2804,7 @@ class CUADVolumeRestrictionLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -2970,9 +2857,7 @@ class CUADWarrantyDurationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3019,9 +2904,7 @@ class DefinitionClassificationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3068,9 +2951,7 @@ class Diversity1LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3094,9 +2975,7 @@ class Diversity1LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class Diversity2LegalBenchClassification(AbsTaskClassification):
@@ -3141,9 +3020,7 @@ class Diversity2LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3167,9 +3044,7 @@ class Diversity2LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class Diversity3LegalBenchClassification(AbsTaskClassification):
@@ -3214,9 +3089,7 @@ class Diversity3LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3240,9 +3113,7 @@ class Diversity3LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class Diversity4LegalBenchClassification(AbsTaskClassification):
@@ -3287,9 +3158,7 @@ class Diversity4LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3313,9 +3182,7 @@ class Diversity4LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class Diversity5LegalBenchClassification(AbsTaskClassification):
@@ -3360,9 +3227,7 @@ class Diversity5LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3386,9 +3251,7 @@ class Diversity5LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class Diversity6LegalBenchClassification(AbsTaskClassification):
@@ -3433,9 +3296,7 @@ class Diversity6LegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3459,9 +3320,7 @@ class Diversity6LegalBenchClassification(AbsTaskClassification):
                 + _amount_in_controversy_map[example["aic_is_met"]]
             }
         )
-        self.dataset = self.dataset.remove_columns(
-            ["parties_are_diverse", "aic_is_met"]
-        )
+        self.dataset = self.dataset.remove_columns(["parties_are_diverse", "aic_is_met"])
 
 
 class FunctionOfDecisionSectionLegalBenchClassification(AbsTaskClassification):
@@ -3516,10 +3375,7 @@ class FunctionOfDecisionSectionLegalBenchClassification(AbsTaskClassification):
 
         self.dataset = self.dataset.map(
             lambda example: {
-                "text": example["Paragraph"]
-                + "\n\n"
-                + "Citation: "
-                + example["Citation"]
+                "text": example["Paragraph"] + "\n\n" + "Citation: " + example["Citation"]
             }
         )
 
@@ -3567,9 +3423,7 @@ class InsurancePolicyInterpretationLegalBenchClassification(AbsTaskClassificatio
         self.dataset = self.dataset.rename_column("answer", "label")
 
         self.dataset = self.dataset.map(
-            lambda example: {
-                "text": example["policy"] + "\n\n" + "Claim: " + example["claim"]
-            }
+            lambda example: {"text": example["policy"] + "\n\n" + "Claim: " + example["claim"]}
         )
 
 
@@ -3622,16 +3476,10 @@ class InternationalCitizenshipQuestionsLegalBenchClassification(AbsTaskClassific
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
-        self.dataset = self.dataset.rename_columns(
-            {"question": "text", "answer": "label"}
-        )
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.dataset.rename_columns({"question": "text", "answer": "label"})
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])
 
 
 class JCrewBlockerLegalBenchClassification(AbsTaskClassification):
@@ -3676,9 +3524,7 @@ class JCrewBlockerLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3733,9 +3579,7 @@ class LearnedHandsBenefitsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3790,9 +3634,7 @@ class LearnedHandsBusinessLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3847,9 +3689,7 @@ class LearnedHandsConsumerLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3904,9 +3744,7 @@ class LearnedHandsCourtsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -3961,9 +3799,7 @@ class LearnedHandsCrimeLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4018,9 +3854,7 @@ class LearnedHandsDivorceLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4075,9 +3909,7 @@ class LearnedHandsDomesticViolenceLegalBenchClassification(AbsTaskClassification
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4132,9 +3964,7 @@ class LearnedHandsEducationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4189,9 +4019,7 @@ class LearnedHandsEmploymentLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4246,9 +4074,7 @@ class LearnedHandsEstatesLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4303,14 +4129,10 @@ class LearnedHandsFamilyLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])
 
 
 class LearnedHandsHealthLegalBenchClassification(AbsTaskClassification):
@@ -4363,9 +4185,7 @@ class LearnedHandsHealthLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4420,14 +4240,10 @@ class LearnedHandsHousingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])
 
 
 class LearnedHandsImmigrationLegalBenchClassification(AbsTaskClassification):
@@ -4480,9 +4296,7 @@ class LearnedHandsImmigrationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4537,9 +4351,7 @@ class LearnedHandsTortsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4594,9 +4406,7 @@ class LearnedHandsTrafficLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4643,9 +4453,7 @@ class LegalReasoningCausalityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -4905,9 +4713,7 @@ class MAUDLegalBenchClassification(AbsTaskClassification):
                 )
             }
             _dataset = _dataset.map(
-                lambda example: {
-                    "label": mapping.get(example["label"].lower(), example["label"])
-                }
+                lambda example: {"label": mapping.get(example["label"].lower(), example["label"])}
             )
             class_count += len(unique_classes) + 1
 
@@ -4927,16 +4733,12 @@ class MAUDLegalBenchClassification(AbsTaskClassification):
 
     def dataset_transform(self):
         # The train split has one example in each dataset, so we combine it with the test split and resample
-        self.dataset = concatenate_datasets(
-            [self.dataset["train"], self.dataset["test"]]
-        )
+        self.dataset = concatenate_datasets([self.dataset["train"], self.dataset["test"]])
         self.dataset = self.dataset.class_encode_column("label")
         self.dataset = self.dataset.train_test_split(
             train_size=0.2, seed=self.seed, stratify_by_column="label"
         )
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])
 
 
 class NYSJudicialEthicsLegalBenchClassification(AbsTaskClassification):
@@ -4981,13 +4783,9 @@ class NYSJudicialEthicsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
-        self.dataset = self.dataset.rename_columns(
-            {"answer": "label", "question": "text"}
-        )
+        self.dataset = self.dataset.rename_columns({"answer": "label", "question": "text"})
 
 
 class OPP115DataRetentionLegalBenchClassification(AbsTaskClassification):
@@ -5039,9 +4837,7 @@ class OPP115DataRetentionLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5095,9 +4891,7 @@ class OPP115DataSecurityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5151,9 +4945,7 @@ class OPP115DoNotTrackLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5207,16 +4999,12 @@ class OPP115FirstPartyCollectionUseLegalBenchClassification(AbsTaskClassificatio
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
 
-class OPP115InternationalAndSpecificAudiencesLegalBenchClassification(
-    AbsTaskClassification
-):
+class OPP115InternationalAndSpecificAudiencesLegalBenchClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="OPP115InternationalAndSpecificAudiencesLegalBenchClassification",
         description="Given a clause from a privacy policy, classify if the clause describe practices that pertain only to a specific group of users (e.g., children, Europeans, or California residents).",
@@ -5265,9 +5053,7 @@ class OPP115InternationalAndSpecificAudiencesLegalBenchClassification(
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5321,9 +5107,7 @@ class OPP115PolicyChangeLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5377,9 +5161,7 @@ class OPP115ThirdPartySharingCollectionLegalBenchClassification(AbsTaskClassific
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5433,9 +5215,7 @@ class OPP115UserAccessEditAndDeletionLegalBenchClassification(AbsTaskClassificat
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5489,9 +5269,7 @@ class OPP115UserChoiceControlLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5544,9 +5322,7 @@ class OralArgumentQuestionPurposeLegalBenchClassification(AbsTaskClassification)
     )
 
     def dataset_transform(self):
-        self.dataset = self.dataset.rename_columns(
-            {"answer": "label", "question": "text"}
-        )
+        self.dataset = self.dataset.rename_columns({"answer": "label", "question": "text"})
 
 
 class OverrulingLegalBenchClassification(AbsTaskClassification):
@@ -5598,14 +5374,10 @@ class OverrulingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])
 
 
 class PersonalJurisdictionLegalBenchClassification(AbsTaskClassification):
@@ -5650,9 +5422,7 @@ class PersonalJurisdictionLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5699,9 +5469,7 @@ class PROALegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5757,9 +5525,7 @@ class SCDBPAccountabilityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5815,9 +5581,7 @@ class SCDBPAuditsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5873,9 +5637,7 @@ class SCDBPCertificationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5931,9 +5693,7 @@ class SCDBPTrainingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -5989,9 +5749,7 @@ class SCDBPVerificationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6047,9 +5805,7 @@ class SCDDAccountabilityLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6105,9 +5861,7 @@ class SCDDAuditsLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6163,9 +5917,7 @@ class SCDDCertificationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6221,9 +5973,7 @@ class SCDDTrainingLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6279,9 +6029,7 @@ class SCDDVerificationLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6328,9 +6076,7 @@ class TelemarketingSalesRuleLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6377,9 +6123,7 @@ class TextualismToolDictionariesLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6426,9 +6170,7 @@ class TextualismToolPlainLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"yes": 1, "no": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
         self.dataset = self.dataset.rename_column("answer", "label")
 
@@ -6475,13 +6217,9 @@ class UCCVCommonLawLegalBenchClassification(AbsTaskClassification):
     def dataset_transform(self):
         mapping = {"ucc": 1, "common law": 0}
         self.dataset = self.dataset.map(
-            lambda example: {
-                "answer": mapping.get(example["answer"].lower(), example["answer"])
-            }
+            lambda example: {"answer": mapping.get(example["answer"].lower(), example["answer"])}
         )
-        self.dataset = self.dataset.rename_columns(
-            {"answer": "label", "contract": "text"}
-        )
+        self.dataset = self.dataset.rename_columns({"answer": "label", "contract": "text"})
 
 
 class UnfairTOSLegalBenchClassification(AbsTaskClassification):
@@ -6534,6 +6272,4 @@ class UnfairTOSLegalBenchClassification(AbsTaskClassification):
 
     def dataset_transform(self):
         self.dataset = self.dataset.rename_column("answer", "label")
-        self.dataset = self.stratified_subsampling(
-            self.dataset, seed=self.seed, splits=["test"]
-        )
+        self.dataset = self.stratified_subsampling(self.dataset, seed=self.seed, splits=["test"])

@@ -41,7 +41,8 @@ from .eng.YahooAnswersTopicsClassification import *
 from .eng.YelpReviewFullClassification import *
 from .est.estonian_valence import *
 from .fas.PersianFoodSentimentClassification import *
-from .fil.FilipinoHateSpeechClassification import *
+
+# from .fil.FilipinoHateSpeechClassification import *
 from .fil.FilipinoShopeeReviewsClassification import *
 from .fin.FinToxicityClassification import *
 from .fra.FrenchBookReviews import *
@@ -137,7 +138,8 @@ from .ukr.UkrFormalityClassification import *
 from .urd.UrduRomanSentimentClassification import *
 from .vie.VieStudentFeedbackClassification import *
 from .zho.CMTEBClassification import *
-from .zho.YueOpenriceReviewClassification import (
-    YueOpenriceReviewClassification,  # noqa: F401
+from .zho.YueOpenriceReviewClassification import (  # noqa: F401
+    YueOpenriceReviewClassification,
 )
+from .zul.IsiZuluNewsClassification import *
 from .zul.IsiZuluNewsClassification import *
