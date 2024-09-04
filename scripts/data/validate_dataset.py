@@ -26,70 +26,76 @@ def get_text_columns(task: mteb.AbsTask) -> list[str]:
         return ["sentences"]
 
 
-def get_label_column(task: mteb.AbsTask) -> str:
-    if isinstance(task, mteb.AbsTaskClassification):
-        return "label"
-    elif isinstance(task, mteb.AbsTaskPairClassification) or isinstance(
+def is_trainable_task(task: mteb.AbsTask) -> bool:
+    return isinstance(task, mteb.AbsTaskClassification) or isinstance(
         task, mteb.AbsTaskMultilabelClassification
-    ):
-        return "labels"
-    raise ValueError()
+    )
 
 
 def get_splits(task: mteb.AbsTask) -> list[str]:
-    if (
-        isinstance(task, mteb.AbsTaskPairClassification)
-        or isinstance(task, mteb.AbsTaskClassification)
-        or isinstance(task, mteb.AbsTaskMultilabelClassification)
-    ):
+    if is_trainable_task(task):
         return ["train"] + task.metadata.eval_splits
     return task.metadata.eval_splits
 
 
-def has_empty_texts(texts: list[str], dataset_name: str, hf_subset: str, split: str) -> bool:
+def has_empty_texts(
+    texts: list[str], dataset_name: str, hf_subset: str, split: str, column_name: str
+) -> bool:
     if num_empty := sum(len(doc.strip()) == 0 for doc in texts):
         print(
-            f"{num_empty} empty documents found in task {dataset_name}, subset {hf_subset}, split {split}"
+            f"{num_empty} empty documents found in task {dataset_name}, subset {hf_subset}, split {split}, column_name {column_name}"
         )
         return False
     return True
 
 
-def has_duplicates(texts: list[str], dataset_name: str, hf_subset: str, split: str) -> bool:
+def has_duplicates(
+    texts: list[str], dataset_name: str, hf_subset: str, split: str, column_name: str
+) -> bool:
     if num_duplicates := len(texts) - len({text.strip() for text in texts}):
         print(
-            f"{num_duplicates} duplicated documents found in task {dataset_name}, subset {hf_subset}, split {split}"
+            f"{num_duplicates} duplicated documents found in task {dataset_name}, subset {hf_subset}, split {split}, column_name {column_name}"
         )
         return False
     return True
 
 
 def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tuple]]:
-    examples = set()
-    label_column = get_label_column(task)
     text_columns = get_text_columns(task)
-    for row in ds_split:
-        row_elements = [row[col] for col in text_columns]
-        row_elements.append(
-            tuple(row[label_column]) if isinstance(row[label_column], list) else row[label_column]
+    return {
+        tuple(
+            [row[col] for col in text_columns]
+            + [tuple(row["label"]) if isinstance(row["label"], list) else row["label"]]
         )
-        examples.add(tuple(row_elements))
-    return examples
+        for row in ds_split
+    }
 
 
-def has_leakage(task: mteb.AbsTask, ds_subset) -> bool:
-    train_examples = {}
+def has_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
+    success = True
+    train_examples = get_ds_unique_examples(task, ds_subset["train"])
+    for split in task.metadata.eval_splits:
+        split_examples = get_ds_unique_examples(task, ds_subset[split])
+        if num_duplicates := len(train_examples.intersection(split_examples)):
+            print(
+                f"{num_duplicates} leaked documents found in task {task.metadata.name}, subset {hf_subset}, split {split}"
+            )
+            success = False
+    return success
 
 
 def get_subset(ds, subset_name):
     return ds if subset_name == "default" else ds[subset_name]
 
 
-def check_splits(ds, task: mteb.AbsTask, hf_subset):
+def check_splits(ds, task: mteb.AbsTask, hf_subset, column_name):
     success = True
     for split in get_splits(task):
-        success &= has_empty_texts(ds[split], task.metadata.name, hf_subset, split)
-        success &= has_duplicates(ds[split], task.metadata.name, hf_subset, split)
+        split_texts = ds[split]
+        if isinstance(split_texts[0], list):
+            split_texts = flatten(split_texts)
+        success &= has_empty_texts(split_texts, task.metadata.name, hf_subset, split, column_name)
+        success &= has_duplicates(split_texts, task.metadata.name, hf_subset, split, column_name)
     return success
 
 
@@ -105,29 +111,26 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
 
     for hf_subset in hf_subsets:
         if isinstance(task, mteb.AbsTaskInstructionRetrieval):
-            queries = get_subset(task.queries, hf_subset)
+            queries = {
+                split: list(ds.values())
+                for split, ds in get_subset(task.queries, hf_subset).items()
+            }
             corpus = get_subset(task.corpus, hf_subset)
             corpus_texts = {
-                split: [row.get("title", "") + row.get("text", "") for row in corpus[split]]
+                split: [
+                    row.get("title", "") + row.get("text", "") for row in corpus[split].values()
+                ]
                 for split in task.metadata.eval_splits
             }
 
-            success &= check_splits(queries, task, hf_subset)
-            success &= check_splits(corpus_texts, task, hf_subset)
+            success &= check_splits(queries, task, hf_subset, "queries")
+            success &= check_splits(corpus_texts, task, hf_subset, "corpus")
 
         elif isinstance(task, mteb.AbsTaskReranking):
             ds = get_subset(task.dataset, hf_subset)
-            for split in task.metadata.eval_splits:
-                success &= has_empty_texts(
-                    ds[split]["query"], task.metadata.name, hf_subset, split
-                )
-                success &= has_empty_texts(
-                    flatten(ds[split]["positive"]), task.metadata.name, hf_subset, split
-                )
-                success &= has_empty_texts(
-                    flatten(ds[split]["negative"]), task.metadata.name, hf_subset, split
-                )
-
+            for column_name in ("query", "positive", "negative"):
+                texts = {split: ds[split][column_name] for split in task.metadata.eval_splits}
+                success &= check_splits(texts, task, hf_subset, column_name)
         elif isinstance(task, mteb.AbsTaskRetrieval):
             queries = get_subset(task.queries, hf_subset)
             corpus = get_subset(task.corpus, hf_subset)
@@ -145,17 +148,23 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
                 for split in task.metadata.eval_splits
             }
 
-            success &= check_splits(query_texts, task, hf_subset)
-            success &= check_splits(corpus_texts, task, hf_subset)
+            success &= check_splits(query_texts, task, hf_subset, "query")
+            success &= check_splits(corpus_texts, task, hf_subset, "corpus")
 
         else:
             ds = get_subset(task.dataset, hf_subset)
+            if is_trainable_task(task):
+                success &= has_leakage(task, hf_subset, ds)
             text_columns = get_text_columns(task)
             if text_columns:
                 for column in text_columns:
-                    success &= check_splits(
-                        {split: ds[split][column] for split in ds}, task, hf_subset
-                    )
+                    splits = {
+                        split: ds[split][0][column]
+                        if isinstance(ds[split], list)
+                        else ds[split][column]
+                        for split in ds
+                    }
+                    success &= check_splits(splits, task, hf_subset, column)
             else:
                 raise ValueError(f"No validator for task {task.metadata.name}")
 
@@ -205,8 +214,11 @@ def validate_dataset(args: argparse.Namespace) -> None:
 
     task: mteb.AbsTask
     for task in tasks:
-        task_valid = True
         print(f"Validating {task.metadata.name}")
+        if task.superseded_by:
+            print(f"Task {task.metadata.name} is superseded by {task.superseded_by}, skipping..")
+            continue
+        task_valid = True
         task.load_data()
 
         task_valid &= check_empty_documents(task)

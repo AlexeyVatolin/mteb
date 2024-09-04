@@ -142,4 +142,3 @@ from .zho.YueOpenriceReviewClassification import (  # noqa: F401
     YueOpenriceReviewClassification,
 )
 from .zul.IsiZuluNewsClassification import *
-from .zul.IsiZuluNewsClassification import *
