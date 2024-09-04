@@ -65,7 +65,7 @@ def has_duplicates(texts: list[str], dataset_name: str, hf_subset: str, split: s
 
 
 def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tuple]]:
-    exmaples = set()
+    examples = set()
     label_column = get_label_column(task)
     text_columns = get_text_columns(task)
     for row in ds_split:
