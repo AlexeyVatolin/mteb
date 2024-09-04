@@ -13,7 +13,7 @@ def flatten(xss):
     return [x for xs in xss for x in xs]
 
 
-def get_text_columns(task: mteb.AbsTask):
+def get_text_columns(task: mteb.AbsTask) -> list[str]:
     if isinstance(task, mteb.AbsTaskBitextMining):
         return list({p for pair in task.get_pairs(task.parallel_subsets) for p in pair})
     elif isinstance(task, mteb.AbsTaskPairClassification) or isinstance(task, mteb.AbsTaskSTS):
@@ -24,6 +24,16 @@ def get_text_columns(task: mteb.AbsTask):
         return ["text"]
     elif isinstance(task, mteb.AbsTaskClustering) or isinstance(task, mteb.AbsTaskClusteringFast):
         return ["sentences"]
+
+
+def get_label_column(task: mteb.AbsTask) -> str:
+    if isinstance(task, mteb.AbsTaskClassification):
+        return "label"
+    elif isinstance(task, mteb.AbsTaskPairClassification) or isinstance(
+        task, mteb.AbsTaskMultilabelClassification
+    ):
+        return "labels"
+    raise ValueError()
 
 
 def get_splits(task: mteb.AbsTask) -> list[str]:
@@ -54,6 +64,23 @@ def has_duplicates(texts: list[str], dataset_name: str, hf_subset: str, split: s
     return True
 
 
+def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tuple]]:
+    exmaples = set()
+    label_column = get_label_column(task)
+    text_columns = get_text_columns(task)
+    for row in ds_split:
+        row_elements = [row[col] for col in text_columns]
+        row_elements.append(
+            tuple(row[label_column]) if isinstance(row[label_column], list) else row[label_column]
+        )
+        exmaples.add(tuple(row_elements))
+    return exmaples
+
+
+def has_leakage(task: mteb.AbsTask, ds_subset) -> bool:
+    train_examples = {}
+
+
 def get_subset(ds, subset_name):
     return ds if subset_name == "default" else ds[subset_name]
 
@@ -62,6 +89,7 @@ def check_splits(ds, task: mteb.AbsTask, hf_subset):
     success = True
     for split in get_splits(task):
         success &= has_empty_texts(ds[split], task.metadata.name, hf_subset, split)
+        success &= has_duplicates(ds[split], task.metadata.name, hf_subset, split)
     return success
 
 
