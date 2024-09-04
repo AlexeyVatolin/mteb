@@ -65,13 +65,15 @@ def has_duplicates(texts: list[str], dataset_name: str, hf_subset: str, split: s
 
 
 def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tuple]]:
+    examples = set()
     label_column = get_label_column(task)
     text_columns = get_text_columns(task)
     for row in ds_split:
-        row_elements = tuple(
-            row[col] for col in text_columns
-        ) + (tuple(row[label_column]) if isinstance(row[label_column], list) else (row[label_column],))
-        examples.add(row_elements)
+        row_elements = [row[col] for col in text_columns]
+        row_elements.append(
+            tuple(row[label_column]) if isinstance(row[label_column], list) else row[label_column]
+        )
+        examples.add(tuple(row_elements))
     return examples
 
 
