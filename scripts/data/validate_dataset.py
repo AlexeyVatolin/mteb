@@ -39,6 +39,12 @@ def get_splits(task: mteb.AbsTask) -> list[str]:
     return task.metadata.eval_splits
 
 
+def get_subset(
+    ds: datasets.DatasetDict, subset_name: str
+) -> datasets.DatasetDict | datasets.Dataset:
+    return ds if subset_name == "default" else ds[subset_name]
+
+
 def verify_non_empty_texts(
     texts: list[str], dataset_name: str, hf_subset: str, split: str, column_name: str
 ) -> bool:
@@ -87,10 +93,6 @@ def verify_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset: datasets.Datas
     return is_valid
 
 
-def get_subset(ds: datasets.DatasetDict, subset_name: str) -> datasets.DatasetDict:
-    return ds if subset_name == "default" else ds[subset_name]
-
-
 def check_splits(
     ds: dict[str, list[str]], task: mteb.AbsTask, hf_subset: str, column_name: str
 ) -> bool:
@@ -114,7 +116,7 @@ def validate_task(task: mteb.AbsTask) -> bool:
         if not task.is_multilingual
         or isinstance(task, mteb.AbsTaskBitextMining)
         and task.parallel_subsets
-        else list(task.dataset)
+        else list(task.hf_subsets)
     )
     is_valid = True
 
@@ -178,35 +180,6 @@ def validate_task(task: mteb.AbsTask) -> bool:
                 raise ValueError(f"No validator for task {task.metadata.name}")
 
     return is_valid
-
-
-def check_duplicates(dataset: datasets.DatasetDict) -> bool:
-    for split, data in dataset.items():
-        if len(data) != len(set(data["text"])):
-            print(f"Duplicate documents found in {split} split.")
-            return False
-    return True
-
-
-def check_leakage(train_data: list[str], test_data: list[str]) -> bool:
-    train_set = set(train_data)
-    test_set = set(test_data)
-    leakage = train_set.intersection(test_set)
-    if leakage:
-        print(f"Leakage found between train and test sets: {leakage}")
-        return False
-    return True
-
-
-def compute_metrics(dataset: datasets.DatasetDict) -> dict[str, Any]:
-    metrics = {}
-    for split, data in dataset.items():
-        lengths = [len(doc.split()) for doc in data["text"]]
-        metrics[split] = {
-            "avg_length": sum(lengths) / len(lengths) if lengths else 0,
-            "num_documents": len(data),
-        }
-    return metrics
 
 
 def validate_dataset(args: argparse.Namespace) -> None:
