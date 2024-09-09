@@ -9,7 +9,7 @@ import mteb
 from mteb.cli import add_task_selection_args
 
 
-def flatten(xss):
+def flatten(xss: list[list[Any]]) -> list[Any]:
     return [x for xs in xss for x in xs]
 
 
@@ -61,7 +61,7 @@ def verify_duplicates(
     return True
 
 
-def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tuple]]:
+def get_ds_unique_examples(task: mteb.AbsTask, ds_split: datasets.Dataset) -> set[tuple[str | tuple]]:
     text_columns = get_text_columns(task)
     return {
         tuple(
@@ -72,7 +72,7 @@ def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tupl
     }
 
 
-def verify_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
+def verify_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset: datasets.DatasetDict) -> bool:
     is_valid = True
     train_examples = get_ds_unique_examples(task, ds_subset["train"])
     for split in task.metadata.eval_splits:
@@ -85,11 +85,11 @@ def verify_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
     return is_valid
 
 
-def get_subset(ds, subset_name):
+def get_subset(ds: datasets.DatasetDict, subset_name: str) -> datasets.DatasetDict:
     return ds if subset_name == "default" else ds[subset_name]
 
 
-def check_splits(ds, task: mteb.AbsTask, hf_subset, column_name):
+def check_splits(ds: dict[str, list[str]], task: mteb.AbsTask, hf_subset: str, column_name: str) -> bool:
     is_valid = True
     for split in get_splits(task):
         split_texts = ds[split]
@@ -231,7 +231,7 @@ def validate_dataset(args: argparse.Namespace) -> None:
             print(f"Task {task.metadata.name} validated, no problems found")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Validate dataset for MTEB.")
     add_task_selection_args(parser)
 
