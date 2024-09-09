@@ -24,6 +24,7 @@ def get_text_columns(task: mteb.AbsTask) -> list[str]:
         return ["text"]
     elif isinstance(task, mteb.AbsTaskClustering) or isinstance(task, mteb.AbsTaskClusteringFast):
         return ["sentences"]
+    raise ValueError(f"Unsuppported task type {task}")
 
 
 def is_trainable_task(task: mteb.AbsTask) -> bool:
@@ -38,7 +39,7 @@ def get_splits(task: mteb.AbsTask) -> list[str]:
     return task.metadata.eval_splits
 
 
-def has_empty_texts(
+def verify_non_empty_texts(
     texts: list[str], dataset_name: str, hf_subset: str, split: str, column_name: str
 ) -> bool:
     if num_empty := sum(len(doc.strip()) == 0 for doc in texts):
@@ -49,7 +50,7 @@ def has_empty_texts(
     return True
 
 
-def has_duplicates(
+def verify_duplicates(
     texts: list[str], dataset_name: str, hf_subset: str, split: str, column_name: str
 ) -> bool:
     if num_duplicates := len(texts) - len({text.strip() for text in texts}):
@@ -71,8 +72,8 @@ def get_ds_unique_examples(task: mteb.AbsTask, ds_split) -> set[tuple[str | tupl
     }
 
 
-def has_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
-    success = True
+def verify_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
+    is_valid = True
     train_examples = get_ds_unique_examples(task, ds_subset["train"])
     for split in task.metadata.eval_splits:
         split_examples = get_ds_unique_examples(task, ds_subset[split])
@@ -80,8 +81,8 @@ def has_leakage(task: mteb.AbsTask, hf_subset: str, ds_subset) -> bool:
             print(
                 f"{num_duplicates} leaked documents found in task {task.metadata.name}, subset {hf_subset}, split {split}"
             )
-            success = False
-    return success
+            is_valid = False
+    return is_valid
 
 
 def get_subset(ds, subset_name):
@@ -89,17 +90,21 @@ def get_subset(ds, subset_name):
 
 
 def check_splits(ds, task: mteb.AbsTask, hf_subset, column_name):
-    success = True
+    is_valid = True
     for split in get_splits(task):
         split_texts = ds[split]
         if isinstance(split_texts[0], list):
             split_texts = flatten(split_texts)
-        success &= has_empty_texts(split_texts, task.metadata.name, hf_subset, split, column_name)
-        success &= has_duplicates(split_texts, task.metadata.name, hf_subset, split, column_name)
-    return success
+        is_valid &= verify_non_empty_texts(
+            split_texts, task.metadata.name, hf_subset, split, column_name
+        )
+        is_valid &= verify_duplicates(
+            split_texts, task.metadata.name, hf_subset, split, column_name
+        )
+    return is_valid
 
 
-def check_empty_documents(task: mteb.AbsTask) -> bool:
+def validate_task(task: mteb.AbsTask) -> bool:
     hf_subsets = (
         ["default"]
         if not task.is_multilingual
@@ -107,7 +112,7 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
         and task.parallel_subsets
         else list(task.dataset)
     )
-    success = True
+    is_valid = True
 
     for hf_subset in hf_subsets:
         if isinstance(task, mteb.AbsTaskInstructionRetrieval):
@@ -123,14 +128,14 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
                 for split in task.metadata.eval_splits
             }
 
-            success &= check_splits(queries, task, hf_subset, "queries")
-            success &= check_splits(corpus_texts, task, hf_subset, "corpus")
+            is_valid &= check_splits(queries, task, hf_subset, "queries")
+            is_valid &= check_splits(corpus_texts, task, hf_subset, "corpus")
 
         elif isinstance(task, mteb.AbsTaskReranking):
             ds = get_subset(task.dataset, hf_subset)
             for column_name in ("query", "positive", "negative"):
                 texts = {split: ds[split][column_name] for split in task.metadata.eval_splits}
-                success &= check_splits(texts, task, hf_subset, column_name)
+                is_valid &= check_splits(texts, task, hf_subset, column_name)
         elif isinstance(task, mteb.AbsTaskRetrieval):
             queries = get_subset(task.queries, hf_subset)
             corpus = get_subset(task.corpus, hf_subset)
@@ -148,13 +153,13 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
                 for split in task.metadata.eval_splits
             }
 
-            success &= check_splits(query_texts, task, hf_subset, "query")
-            success &= check_splits(corpus_texts, task, hf_subset, "corpus")
+            is_valid &= check_splits(query_texts, task, hf_subset, "query")
+            is_valid &= check_splits(corpus_texts, task, hf_subset, "corpus")
 
         else:
             ds = get_subset(task.dataset, hf_subset)
             if is_trainable_task(task):
-                success &= has_leakage(task, hf_subset, ds)
+                is_valid &= verify_leakage(task, hf_subset, ds)
             text_columns = get_text_columns(task)
             if text_columns:
                 for column in text_columns:
@@ -164,11 +169,11 @@ def check_empty_documents(task: mteb.AbsTask) -> bool:
                         else ds[split][column]
                         for split in ds
                     }
-                    success &= check_splits(splits, task, hf_subset, column)
+                    is_valid &= check_splits(splits, task, hf_subset, column)
             else:
                 raise ValueError(f"No validator for task {task.metadata.name}")
 
-    return success
+    return is_valid
 
 
 def check_duplicates(dataset: datasets.DatasetDict) -> bool:
@@ -218,31 +223,21 @@ def validate_dataset(args: argparse.Namespace) -> None:
         if task.superseded_by:
             print(f"Task {task.metadata.name} is superseded by {task.superseded_by}, skipping..")
             continue
-        task_valid = True
         task.load_data()
 
-        task_valid &= check_empty_documents(task)
+        task_valid = validate_task(task)
 
-        # if not check_duplicates(dataset):
-        #     print(f"Validation failed for {task}: Duplicate documents found.")
-        #     continue
-
-        # if "train" in dataset and "test" in dataset:
-        #     if not check_leakage(dataset["train"]["text"], dataset["test"]["text"]):
-        #         print(f"Validation failed for {task}: Leakage between train and test sets.")
-        #         continue
-
-        # metrics = compute_metrics(dataset)
-        # print(f"Validation passed for {task}. Metrics:")
-        # for split, split_metrics in metrics.items():
-        #     print(f"{split} split: {split_metrics}")
         if task_valid:
             print(f"Task {task.metadata.name} validated, no problems found")
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Validate dataset for MTEB.")
     add_task_selection_args(parser)
 
     args = parser.parse_args()
     validate_dataset(args)
+
+
+if __name__ == "__main__":
+    main()
