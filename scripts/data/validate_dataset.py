@@ -9,8 +9,8 @@ import mteb
 from mteb.cli import add_task_selection_args
 
 
- def flatten(nested_list: list[list[Any]]) -> list[Any]:
-     return [element for sublist in nested_list for element in sublist]
+def flatten(nested_list: list[list[Any]]) -> list[Any]:
+    return [element for sublist in nested_list for element in sublist]
 
 
 def get_text_columns(task: mteb.AbsTask) -> list[str]:
