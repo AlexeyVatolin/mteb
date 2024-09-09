@@ -9,8 +9,8 @@ import mteb
 from mteb.cli import add_task_selection_args
 
 
-def flatten(xss: list[list[Any]]) -> list[Any]:
-    return [x for xs in xss for x in xs]
+ def flatten(nested_list: list[list[Any]]) -> list[Any]:
+     return [element for sublist in nested_list for element in sublist]
 
 
 def get_text_columns(task: mteb.AbsTask) -> list[str]:
@@ -61,7 +61,9 @@ def verify_duplicates(
     return True
 
 
-def get_ds_unique_examples(task: mteb.AbsTask, ds_split: datasets.Dataset) -> set[tuple[str | tuple]]:
+def get_ds_unique_examples(
+    task: mteb.AbsTask, ds_split: datasets.Dataset
+) -> set[tuple[str | tuple]]:
     text_columns = get_text_columns(task)
     return {
         tuple(
@@ -89,7 +91,9 @@ def get_subset(ds: datasets.DatasetDict, subset_name: str) -> datasets.DatasetDi
     return ds if subset_name == "default" else ds[subset_name]
 
 
-def check_splits(ds: dict[str, list[str]], task: mteb.AbsTask, hf_subset: str, column_name: str) -> bool:
+def check_splits(
+    ds: dict[str, list[str]], task: mteb.AbsTask, hf_subset: str, column_name: str
+) -> bool:
     is_valid = True
     for split in get_splits(task):
         split_texts = ds[split]
