@@ -28,7 +28,7 @@ class SadeemQuestionRetrieval(AbsTaskRetrieval):
         date=("2024-01-01", "2024-04-01"),
         domains=["Written", "Written"],
         task_subtypes=["Article retrieval"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -38,10 +38,6 @@ class SadeemQuestionRetrieval(AbsTaskRetrieval):
             author = "abubakr.soliman@sadeem.app"
             }
         """,
-        descriptive_stats={
-            "n_samples": {_EVAL_SPLIT: 22979},
-            "avg_character_length": {_EVAL_SPLIT: 500.0},
-        },
     )
 
     def load_data(self, **kwargs):

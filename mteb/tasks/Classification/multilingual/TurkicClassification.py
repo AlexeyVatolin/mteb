@@ -32,16 +32,12 @@ class TurkicClassification(MultilingualTask, AbsTaskClassification):
         date=("2023-02-16", "2023-09-03"),
         domains=["News", "Written"],
         task_subtypes=["Topic classification"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
         bibtex_citation="""
         """,
-        descriptive_stats={
-            "n_samples": {"train": 193056},
-            "avg_character_length": {"train": 1103.13},
-        },
     )
 
     def transform_data(self, dataset, lang):

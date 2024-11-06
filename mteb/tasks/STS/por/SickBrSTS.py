@@ -25,7 +25,7 @@ class SickBrSTS(AbsTaskSTS):
         date=("2018-01-01", "2018-09-01"),  # rough estimate
         domains=["Web", "Written"],
         task_subtypes=["Textual Entailment"],
-        license="Unknown",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="human-translated and localized",
@@ -50,10 +50,6 @@ class SickBrSTS(AbsTaskSTS):
   isbn="978-3-319-99722-3"
 }
         """,
-        descriptive_stats={
-            "n_samples": {"test": N_SAMPLES},
-            "avg_character_length": {"test": 54.89},
-        },
     )
 
     @property

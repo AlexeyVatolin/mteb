@@ -42,14 +42,10 @@ class SRNCorpusBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2022-04-01", "2022-07-31"),
         domains=["Social", "Web", "Written"],
         task_subtypes=[],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
-        descriptive_stats={
-            "n_samples": {"test": _N},
-            "avg_character_length": {"test": 55},
-        },
         bibtex_citation="""
 @article{zwennicker2022towards,
   title={Towards a general purpose machine translation system for Sranantongo},

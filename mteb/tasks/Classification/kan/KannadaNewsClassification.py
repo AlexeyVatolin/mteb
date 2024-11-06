@@ -22,7 +22,7 @@ class KannadaNewsClassification(AbsTaskClassification):
         date=("2019-03-17", "2020-08-06"),
         domains=["News", "Written"],
         task_subtypes=["Topic classification"],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -33,10 +33,6 @@ class KannadaNewsClassification(AbsTaskClassification):
     year={2020},
     journal={arXiv preprint arXiv:2005.00085},
 }""",
-        descriptive_stats={
-            "n_samples": {"train": 6460},
-            "avg_character_length": {"train": 65.88},
-        },
     )
 
     def dataset_transform(self):

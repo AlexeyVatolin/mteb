@@ -28,15 +28,11 @@ class RomaTalesBitextMining(AbsTaskBitextMining, MultilingualTask):
         ),  # Broad historical range for the creation of folk tales
         domains=["Fiction", "Written"],
         task_subtypes=[],
-        license="Not specified",
+        license="not specified",
         annotations_creators="expert-annotated",
         dialect=["Lovari"],
         sample_creation="created",
         bibtex_citation="",
-        descriptive_stats={
-            "n_samples": {"test": 215},
-            "avg_character_length": {"test": 316.8046511627907},
-        },
     )
 
     def load_data(self, **kwargs):

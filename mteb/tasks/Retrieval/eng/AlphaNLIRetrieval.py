@@ -24,7 +24,7 @@ class AlphaNLI(AbsTaskRetrieval):
         date=("2019-01-01", "2019-12-31"),
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="CC BY-NC 4.0",
+        license="cc-by-nc-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -42,16 +42,7 @@ class AlphaNLI(AbsTaskRetrieval):
   year={2019}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 1532},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 43.42647308646886,
-                    "average_query_length": 103.05483028720627,
-                    "num_documents": 241347,
-                    "num_queries": 1532,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
+        prompt={
+            "query": "Given the following start and end of a story, retrieve a possible reason that leads to the end."
         },
     )

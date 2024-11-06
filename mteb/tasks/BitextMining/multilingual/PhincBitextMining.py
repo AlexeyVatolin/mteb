@@ -27,7 +27,7 @@ class PhincBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2019-01-01", "2020-01-01"),
         domains=["Social", "Written"],
         task_subtypes=[],
-        license="CC BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -40,8 +40,4 @@ class PhincBitextMining(AbsTaskBitextMining, MultilingualTask):
         year={2020}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"train": 13738},
-            "avg_character_length": {"train": 75.32},
-        },
     )

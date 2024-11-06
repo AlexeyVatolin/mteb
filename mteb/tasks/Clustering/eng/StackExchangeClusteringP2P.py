@@ -32,7 +32,7 @@ class StackExchangeClusteringP2PFast(AbsTaskClusteringFast):
         date=("2021-01-01", "2021-04-14"),
         domains=["Web", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -49,10 +49,7 @@ class StackExchangeClusteringP2PFast(AbsTaskClusteringFast):
         archivePrefix = {arXiv},
         eprint    = {2104.07081}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 2996},
-            "avg_character_length": {"test": 1090.7},
-        },
+        prompt="Identify the topic or theme of StackExchange posts based on the given paragraphs",
     )
 
     def dataset_transform(self):
@@ -115,8 +112,5 @@ class StackExchangeClusteringP2P(AbsTaskClustering):
         archivePrefix = {arXiv},
         eprint    = {2104.07081}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 75000},
-            "avg_character_length": {"test": 1090.7},
-        },
+        prompt="Identify the topic or theme of StackExchange posts based on the given paragraphs",
     )

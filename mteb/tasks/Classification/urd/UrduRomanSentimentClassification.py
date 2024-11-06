@@ -23,7 +23,7 @@ class UrduRomanSentimentClassification(AbsTaskClassification):
         main_score="f1",
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -36,10 +36,6 @@ class UrduRomanSentimentClassification(AbsTaskClassification):
   note         = {{DOI}: https://doi.org/10.24432/C58325}
 }
     """,
-        descriptive_stats={
-            "n_samples": {"train": 2048},
-            "avg_character_length": {"train": 68.248},
-        },
     )
 
     def dataset_transform(self):

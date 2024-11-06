@@ -24,7 +24,7 @@ class WRIMEClassification(AbsTaskClassification):
         date=("2011-06-01", "2020-05-31"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="The dataset is available for research purposes only. Redistribution of the dataset is prohibited.",
+        license="https://huggingface.co/datasets/shunk031/wrime#licensing-information",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -54,10 +54,6 @@ class WRIMEClassification(AbsTaskClassification):
     pages = "2095--2104",
     abstract = "We annotate 17,000 SNS posts with both the writer{'}s subjective emotional intensity and the reader{'}s objective one to construct a Japanese emotion analysis dataset. In this study, we explore the difference between the emotional intensity of the writer and that of the readers with this dataset. We found that the reader cannot fully detect the emotions of the writer, especially anger and trust. In addition, experimental results in estimating the emotional intensity show that it is more difficult to estimate the writer{'}s subjective labels than the readers{'}. The large gap between the subjective and objective emotions imply the complexity of the mapping from a post to the subjective emotion intensities, which also leads to a lower performance with machine learning models.",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 47.78},
-        },
     )
 
     def dataset_transform(self):

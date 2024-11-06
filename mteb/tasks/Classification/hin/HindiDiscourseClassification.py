@@ -24,7 +24,7 @@ class HindiDiscourseClassification(AbsTaskClassification):
         domains=["Fiction", "Social", "Written"],
         dialect=[],
         task_subtypes=["Discourse coherence"],
-        license="MIT",
+        license="mit",
         annotations_creators="expert-annotated",
         sample_creation="found",
         bibtex_citation="""
@@ -50,10 +50,6 @@ class HindiDiscourseClassification(AbsTaskClassification):
     language = "English",
     ISBN = "979-10-95546-34-4",
 }""",
-        descriptive_stats={
-            "n_samples": {"train": 2048},
-            "avg_character_length": {"train": 79.23828125},
-        },
     )
 
     def dataset_transform(self):

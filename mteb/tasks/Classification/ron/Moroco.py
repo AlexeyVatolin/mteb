@@ -25,7 +25,7 @@ class Moroco(AbsTaskClassification):
         date=("2017-10-01", "2017-10-31"),
         domains=["News", "Written"],
         task_subtypes=["Topic classification"],
-        license="CC BY-4.0",
+        license="cc-by-4.0",
         annotations_creators="derived",
         dialect=[
             "ron-Latn-ron",
@@ -41,10 +41,6 @@ class Moroco(AbsTaskClassification):
         pages={688--698},
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 1710.94},
-        },
     )
 
     def dataset_transform(self):

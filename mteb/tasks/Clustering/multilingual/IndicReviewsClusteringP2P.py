@@ -45,7 +45,7 @@ class IndicReviewsClusteringP2P(AbsTaskClustering, MultilingualTask):
         date=("2022-08-01", "2022-12-20"),
         domains=["Reviews", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="CC0",
+        license="cc0-1.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="machine-translated and verified",
@@ -56,10 +56,6 @@ class IndicReviewsClusteringP2P(AbsTaskClustering, MultilingualTask):
   year      = {2022},
   doi       = {10.18653/v1/2023.acl-long.693}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1000},
-            "avg_character_length": {"test": 137.6},
-        },
     )
 
     def load_data(self, **kwargs: Any) -> None:

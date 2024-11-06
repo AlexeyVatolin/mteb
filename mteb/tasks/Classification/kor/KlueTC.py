@@ -23,7 +23,7 @@ class KlueTC(AbsTaskClassification):
         date=("2016-01-01", "2020-12-31"),  # from 2016 to 2020
         domains=["News", "Written"],
         task_subtypes=["Topic classification"],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -35,10 +35,6 @@ class KlueTC(AbsTaskClassification):
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }""",
-        descriptive_stats={
-            "n_samples": {"validation": 2048},
-            "avg_character_length": {"validation": 27.079609091907326},
-        },
     )
 
     def dataset_transform(self):

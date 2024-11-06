@@ -22,7 +22,7 @@ class SpanishSentimentClassification(AbsTaskClassification):
         main_score="accuracy",
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -51,8 +51,4 @@ class SpanishSentimentClassification(AbsTaskClassification):
             pages = "89--95",
         }
         """,
-        descriptive_stats={
-            "n_samples": {"validation": 147, "test": 296},
-            "avg_character_length": {"validation": 85.02, "test": 87.91},
-        },
     )

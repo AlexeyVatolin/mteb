@@ -30,7 +30,7 @@ class NollySentiBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2022-01-01", "2023-01-01"),
         domains=["Social", "Reviews", "Written"],
         task_subtypes=[],
-        license="CC BY-SA 4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -43,8 +43,4 @@ class NollySentiBitextMining(AbsTaskBitextMining, MultilingualTask):
             year={2023}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"train": 1640},
-            "avg_character_length": {"train": 135.91},
-        },
     )

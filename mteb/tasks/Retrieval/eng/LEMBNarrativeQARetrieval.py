@@ -28,7 +28,7 @@ class LEMBNarrativeQARetrieval(AbsTaskRetrieval):
         date=("1000-01-01", "2017-12-31"),
         domains=["Fiction", "Non-fiction", "Written"],
         task_subtypes=["Article retrieval"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -57,18 +57,6 @@ class LEMBNarrativeQARetrieval(AbsTaskRetrieval):
             abstract = "",
         }
         """,
-        descriptive_stats={
-            "n_samples": {_EVAL_SPLIT: 10804},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 326753.5323943662,
-                    "average_query_length": 47.89453536223562,
-                    "num_documents": 355,
-                    "num_queries": 10449,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
     )
 
     def load_data(self, **kwargs):

@@ -22,7 +22,7 @@ class YueOpenriceReviewClassification(AbsTaskClassification):
         date=("2019-01-01", "2019-05-01"),
         domains=["Reviews", "Spoken"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -34,10 +34,6 @@ class YueOpenriceReviewClassification(AbsTaskClassification):
   year={2019},
   organization={KDD WISDOM}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 6161},
-            "avg_character_length": {"test": 173.0},
-        },
     )
 
     @property

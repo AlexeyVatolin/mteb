@@ -30,22 +30,10 @@ class GeorgianFAQRetrieval(AbsTaskRetrieval):
         reference="https://huggingface.co/datasets/jupyterjazz/georgian-faq",
         date=("2024-05-02", "2024-05-03"),
         task_subtypes=["Question answering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         bibtex_citation="",
-        descriptive_stats={
-            "n_samples": {_EVAL_SPLIT: 2566},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 511.24668745128605,
-                    "average_query_length": 61.69551656920078,
-                    "num_documents": 2566,
-                    "num_queries": 2565,
-                    "average_relevant_docs_per_query": 1.0003898635477584,
-                }
-            },
-        },
     )
 
     def load_data(self, **kwargs):

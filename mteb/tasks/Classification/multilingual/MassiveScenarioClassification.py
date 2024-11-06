@@ -78,7 +78,7 @@ class MassiveScenarioClassification(MultilingualTask, AbsTaskClassification):
         date=("2022-01-01", "2022-04-22"),
         domains=["Spoken"],
         task_subtypes=[],
-        license="Apache 2.0",
+        license="apache-2.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="human-translated and localized",  # with the exception of the English data
@@ -90,8 +90,5 @@ class MassiveScenarioClassification(MultilingualTask, AbsTaskClassification):
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }""",
-        descriptive_stats={
-            "n_samples": {"validation": 2033, "test": 2974},
-            "avg_character_length": {"validation": 34.8, "test": 34.6},
-        },
+        prompt="Given a user utterance as query, find the user scenarios",
     )

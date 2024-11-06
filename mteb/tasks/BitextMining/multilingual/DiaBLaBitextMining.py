@@ -29,7 +29,7 @@ class DiaBLaBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2016-01-01", "2017-12-31"),
         domains=["Social", "Written"],
         task_subtypes=[],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -42,7 +42,6 @@ class DiaBLaBitextMining(AbsTaskBitextMining, MultilingualTask):
         year={2019}
         }
         """,
-        descriptive_stats={"n_samples": {}, "avg_character_length": {}},
     )
 
     def load_data(self, **kwargs):

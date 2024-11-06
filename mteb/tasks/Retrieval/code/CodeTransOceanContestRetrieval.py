@@ -24,7 +24,7 @@ class CodeTransOceanContestRetrieval(AbsTaskRetrieval):
         date=("2023-10-08", "2023-10-08"),
         domains=["Programming", "Written"],
         task_subtypes=["Code retrieval"],
-        license="Apache-2.0",
+        license="apache-2.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -37,15 +37,4 @@ class CodeTransOceanContestRetrieval(AbsTaskRetrieval):
               primaryClass={cs.AI},
               url={https://arxiv.org/abs/2310.04951}, 
         }""",
-        descriptive_stats={
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 1528.9156746031747,
-                    "average_query_length": 1012.1131221719457,
-                    "num_documents": 1008,
-                    "num_queries": 221,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            }
-        },
     )

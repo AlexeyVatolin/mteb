@@ -27,7 +27,7 @@ class IndonesianMongabayConservationClassification(AbsTaskClassification):
         main_score="f1",
         domains=["Web", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -54,10 +54,6 @@ class IndonesianMongabayConservationClassification(AbsTaskClassification):
             pages = "30--54",
         }
         """,
-        descriptive_stats={
-            "n_samples": {"validation": 984, "test": 970},
-            "avg_character_length": {"validation": 1675.8, "test": 1675.5},
-        },
     )
 
     def dataset_transform(self):

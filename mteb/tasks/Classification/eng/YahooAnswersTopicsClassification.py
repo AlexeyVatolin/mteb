@@ -23,7 +23,7 @@ class YahooAnswersTopicsClassification(AbsTaskClassification):
         date=("2022-01-25", "2022-01-25"),
         domains=["Web", "Written"],
         task_subtypes=["Topic classification"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -39,10 +39,6 @@ class YahooAnswersTopicsClassification(AbsTaskClassification):
         volume = {28},
         year = {2015}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 60000},
-            "avg_character_length": {"test": 346.35},
-        },
     )
 
     @property

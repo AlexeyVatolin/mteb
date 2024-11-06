@@ -16,8 +16,9 @@ from ..evaluation.evaluators import utils
 from ..evaluation.evaluators.InstructionRetrievalEvaluator import (
     InstructionRetrievalEvaluator,
 )
-from .AbsTask import AbsTask, DescriptiveStatistics
+from .AbsTask import AbsTask
 from .AbsTaskRetrieval import HFDataLoader
+from .TaskMetadata import DescriptiveStatistics
 
 logger = logging.getLogger(__name__)
 
@@ -222,8 +223,10 @@ class InstructionRetrievalDescriptiveStatistics(DescriptiveStatistics):
     """Descriptive statistics for Instruction Retrieval tasks
 
     Attributes:
+        num_samples: Number of samples
         num_queries: Number of queries
         num_docs: Number of documents
+        number_of_characters: Total number of symbols in the dataset
         average_document_length: Average length of documents
         average_query_length: Average length of queries
         average_instruction_length: Average length of instructions
@@ -232,8 +235,10 @@ class InstructionRetrievalDescriptiveStatistics(DescriptiveStatistics):
         average_top_ranked_per_query: Average number of top ranked docs per query
     """
 
+    num_samples: int
     num_queries: int
     num_docs: int
+    number_of_characters: int
     average_document_length: float
     average_query_length: float
     average_instruction_length: float
@@ -248,15 +253,17 @@ class AbsTaskInstructionRetrieval(AbsTask):
         instruction: A relevant document will provide the projected or actual date of completion of the project, its estimated or actual total cost, or the estimated or ongoing electrical output of the finished project. Discussions of the social, political, or ecological impact of the project are not relevant.
 
     Child-classes must implement the following properties:
-    self.corpus = Dict[corpus_id, Dict[str, str]] #id => dict with document datas like title and text
-    self.queries = Dict[query_id, str] #id => query
-    self.relevant_docs = Dict[query_id, Dict[corpus_id, int]]
-    self.og_instructions = Dict[str, str] query => original instruction
-    self.changed_instructions = Dict[str, str] query => changed instruction
-    self.top_ranked = Dict[query_id, List[corpus_id]] #id => list of top ranked document ids
+    self.corpus = dict[corpus_id, dict[str, str]] #id => dict with document datas like title and text
+    self.queries = dict[query_id, str] #id => query
+    self.relevant_docs = dict[query_id, dict[corpus_id, int]]
+    self.og_instructions = dict[str, str] query => original instruction
+    self.changed_instructions = dict[str, str] query => changed instruction
+    self.top_ranked = dict[query_id, list[corpus_id]] #id => list of top ranked document ids
 
     See https://arxiv.org/abs/2403.15246 for more details
     """
+
+    abstask_prompt = "Retrieve text based on user query."
 
     def __init__(
         self,
@@ -372,6 +379,7 @@ class AbsTaskInstructionRetrieval(AbsTask):
         )
 
         top_ranked = top_ranked[split]
+        kwargs["prediction_name"] = "og"  # for naming predictions, as needed
         scores_og, results_og = self._evaluate_subset(
             retriever,
             corpus,
@@ -382,6 +390,7 @@ class AbsTaskInstructionRetrieval(AbsTask):
             lang,
             **kwargs,
         )
+        kwargs["prediction_name"] = "changed"  # for naming predictions, as needed
         scores_changed, results_changed = self._evaluate_subset(
             retriever,
             corpus,
@@ -411,6 +420,7 @@ class AbsTaskInstructionRetrieval(AbsTask):
                 keywords[split],
                 short_instructions[split],
             )
+            kwargs["prediction_name"] = "base"  # for naming predictions, as needed
             scores_base, results_base = self._evaluate_subset(
                 retriever,
                 corpus,
@@ -421,6 +431,7 @@ class AbsTaskInstructionRetrieval(AbsTask):
                 lang,
                 **kwargs,
             )
+            kwargs["prediction_name"] = "keywords"  # for naming predictions, as needed
             scores_w_keywords_scores, scores_w_keywords_results = self._evaluate_subset(
                 retriever,
                 corpus,
@@ -430,6 +441,9 @@ class AbsTaskInstructionRetrieval(AbsTask):
                 top_ranked,
                 lang,
                 **kwargs,
+            )
+            kwargs["prediction_name"] = (
+                "short_instr"  # for naming predictions, as needed
             )
             (
                 scores_w_short_instr_scores,
@@ -572,6 +586,11 @@ class AbsTaskInstructionRetrieval(AbsTask):
             else:
                 qrels_save_path = f"{output_folder}/{self.metadata_dict['name']}_{lang}_predictions.json"
 
+            if kwargs.get("prediction_name", None):
+                qrels_save_path = qrels_save_path.replace(
+                    ".json", f"_{kwargs['prediction_name']}.json"
+                )
+
             with open(qrels_save_path, "w") as f:
                 json.dump(results, f)
 
@@ -667,8 +686,13 @@ class AbsTaskInstructionRetrieval(AbsTask):
             else 0
         )
         return InstructionRetrievalDescriptiveStatistics(
+            num_samples=len(queries) + len(corpus),
             num_docs=len(corpus),
             num_queries=len(queries),
+            number_of_characters=total_corpus_len
+            + total_queries_len
+            + total_instructions_len
+            + total_changed_instructions_len,
             average_document_length=(
                 total_corpus_len / len(corpus) if len(corpus) else 0
             ),

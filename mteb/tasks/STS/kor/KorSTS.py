@@ -23,7 +23,7 @@ class KorSTS(AbsTaskSTS):
         date=("2012-01-01", "2017-01-01"),  # rough approximates
         domains=["News", "Web"],
         task_subtypes=None,
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators=None,
         dialect=[],
         sample_creation="machine-translated and localized",
@@ -33,10 +33,6 @@ class KorSTS(AbsTaskSTS):
   journal={arXiv preprint arXiv:2004.03289},
   year={2020}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1379},
-            "avg_character_length": {"test": 29.279433139534884},
-        },
     )
 
     @property

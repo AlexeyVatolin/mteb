@@ -22,7 +22,7 @@ class DKHateClassification(AbsTaskClassification):
         date=("2018-01-01", "2018-12-31"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC-BY-4.0",
+        license="cc-by-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -55,10 +55,7 @@ class DKHateClassification(AbsTaskClassification):
     language = "English",
     ISBN = "979-10-95546-34-4",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 329},
-            "avg_character_length": {"test": 104.0},
-        },
+        prompt="Classify Danish tweets based on offensiveness (offensive, not offensive)",
     )
 
     @property

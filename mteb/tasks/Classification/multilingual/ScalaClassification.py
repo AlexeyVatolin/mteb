@@ -34,7 +34,7 @@ class ScalaClassification(AbsTaskClassification, MultilingualTask):
         ),  # derived from dependency treebank, this a the best guess
         domains=["Fiction", "News", "Non-fiction", "Blog", "Spoken", "Web", "Written"],
         task_subtypes=["Linguistic acceptability"],
-        license="CC BY-SA 4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -51,10 +51,7 @@ class ScalaClassification(AbsTaskClassification, MultilingualTask):
             url = "https://aclanthology.org/2023.nodalida-1.20",
             pages = "185--201",
         }""",
-        descriptive_stats={
-            "n_samples": {"test": len(_LANGS) * 1024},
-            "avg_character_length": {"test": 102.72},
-        },
+        prompt="Classify passages in Scandinavian Languages based on linguistic acceptability",
     )
 
     @property

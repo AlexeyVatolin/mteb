@@ -48,32 +48,11 @@ class CrossLingualSemanticDiscriminationWMT19(AbsTaskRetrieval, MultilingualTask
         date=("2018-01-01", "2023-12-12"),
         domains=["News", "Written"],
         task_subtypes=["Cross-Lingual Semantic Discrimination"],
-        license="CC BY-SA 4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="LM-generated and verified",
         bibtex_citation="preprint_coming",
-        descriptive_stats={
-            "n_samples": {"test": 2946},
-            "avg_character_length": {
-                "test": {
-                    "deu-fra": {
-                        "average_document_length": 147.49857433808555,
-                        "average_query_length": 152.95587236931433,
-                        "num_documents": 7365,
-                        "num_queries": 1473,
-                        "average_relevant_docs_per_query": 1.0,
-                    },
-                    "fra-deu": {
-                        "average_document_length": 154.21968771215208,
-                        "average_query_length": 145.877800407332,
-                        "num_documents": 7365,
-                        "num_queries": 1473,
-                        "average_relevant_docs_per_query": 1.0,
-                    },
-                },
-            },
-        },
     )
 
     def __init__(self, **kwargs):

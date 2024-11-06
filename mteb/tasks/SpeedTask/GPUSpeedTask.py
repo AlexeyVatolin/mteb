@@ -20,13 +20,9 @@ class GPUSpeedTask(AbsTaskSpeedTask):
         date=("2024-06-20", "2024-06-20"),
         domains=["Fiction", "Written"],
         task_subtypes=[],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
         bibtex_citation="",
-        descriptive_stats={
-            "n_samples": {"test": 1},
-            "avg_character_length": {"test": 3591},
-        },
     )

@@ -31,7 +31,7 @@ class TwentyNewsgroupsClustering(AbsTaskClustering):
         date=("1995-01-01", "1995-01-01"),
         domains=["News", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -49,10 +49,7 @@ class TwentyNewsgroupsClustering(AbsTaskClustering):
         author = {Ken Lang},
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 59545},
-            "avg_character_length": {"test": 32.0},
-        },
+        prompt="Identify the topic or theme of the given news articles",
     )
 
 
@@ -74,7 +71,7 @@ class TwentyNewsgroupsClusteringFast(AbsTaskClusteringFast):
         date=("1995-01-01", "1995-01-01"),
         domains=["News", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -92,10 +89,7 @@ class TwentyNewsgroupsClusteringFast(AbsTaskClusteringFast):
         author = {Ken Lang},
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2381},
-            "avg_character_length": {"test": 32.0},
-        },
+        prompt="Identify the topic or theme of the given news articles",
     )
 
     def dataset_transform(self):

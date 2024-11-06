@@ -24,7 +24,7 @@ class RARbCode(AbsTaskRetrieval):
         date=("2019-01-01", "2023-12-31"),
         domains=["Programming", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -52,16 +52,5 @@ class RARbCode(AbsTaskRetrieval):
   year={2019}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 1484},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 793.6813076734267,
-                    "average_query_length": 375.7506738544474,
-                    "num_documents": 301482,
-                    "num_queries": 1484,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
+        prompt={"query": "Retrieve the answer for the following coding problem."},
     )

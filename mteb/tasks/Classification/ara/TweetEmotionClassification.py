@@ -3,8 +3,6 @@ from __future__ import annotations
 from mteb.abstasks.AbsTaskClassification import AbsTaskClassification
 from mteb.abstasks.TaskMetadata import TaskMetadata
 
-N_SAMPLES = 2048
-
 
 class TweetEmotionClassification(AbsTaskClassification):
     metadata = TaskMetadata(
@@ -25,7 +23,7 @@ class TweetEmotionClassification(AbsTaskClassification):
         date=("2014-01-01", "2016-08-31"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=["ara-arab-EG", "ara-arab-LB", "ara-arab-JO", "ara-arab-SA"],
         sample_creation="found",
@@ -39,10 +37,6 @@ class TweetEmotionClassification(AbsTaskClassification):
   organization={Springer}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"train": N_SAMPLES},
-            "avg_character_length": {"train": 78.8},
-        },
     )
 
     def dataset_transform(self):

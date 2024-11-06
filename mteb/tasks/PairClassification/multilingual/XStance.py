@@ -31,7 +31,7 @@ class XStance(MultilingualTask, AbsTaskPairClassification):
         date=("2011-01-01", "2020-12-31"),
         domains=["Social", "Written"],
         task_subtypes=["Political classification"],
-        license="cc by-nc 4.0",
+        license="cc-by-nc-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -46,10 +46,7 @@ class XStance(MultilingualTask, AbsTaskPairClassification):
                 url       = "http://ceur-ws.org/Vol-2624/paper9.pdf"
             }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 152.41},
-        },  # length of`sent1` + `sent2`
+        # length of`sent1` + `sent2`
     )
 
     def load_data(self, **kwargs):

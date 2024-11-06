@@ -32,7 +32,7 @@ class CyrillicTurkicLangClassification(AbsTaskClassification):
         date=("1998-01-01", "2012-05-01"),
         domains=["Web", "Written"],
         task_subtypes=["Language identification"],
-        license="CC BY-NC 4.0 DEED",
+        license="cc-by-nc-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -44,10 +44,6 @@ class CyrillicTurkicLangClassification(AbsTaskClassification):
         year={2012}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 92.22},
-        },
     )
 
     def dataset_transform(self):

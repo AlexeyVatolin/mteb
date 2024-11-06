@@ -24,7 +24,7 @@ class TempReasonL1(AbsTaskRetrieval):
         date=("2023-01-01", "2023-12-31"),
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="CC BY-SA 3.0",
+        license="cc-by-sa-3.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -41,16 +41,7 @@ class TempReasonL1(AbsTaskRetrieval):
   year={2023}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 4000},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 8.989843250159948,
-                    "average_query_length": 50.22375,
-                    "num_documents": 12504,
-                    "num_queries": 4000,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
+        prompt={
+            "query": "Given the following question about time, retrieve the correct answer."
         },
     )

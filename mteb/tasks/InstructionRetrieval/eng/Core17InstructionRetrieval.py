@@ -8,7 +8,7 @@ from ....abstasks.AbsTaskInstructionRetrieval import AbsTaskInstructionRetrieval
 class Core17InstructionRetrieval(AbsTaskInstructionRetrieval):
     metadata = TaskMetadata(
         name="Core17InstructionRetrieval",
-        description="Measuring retrieval instruction following ability on Core17 narratives.",
+        description="Measuring retrieval instruction following ability on Core17 narratives for the FollowIR benchmark.",
         reference="https://arxiv.org/abs/2403.15246",
         dataset={
             "path": "jhu-clsp/core17-instructions",
@@ -23,7 +23,7 @@ class Core17InstructionRetrieval(AbsTaskInstructionRetrieval):
         date=("2023-08-01", "2024-04-01"),
         domains=["News", "Written"],
         task_subtypes=[],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -35,17 +35,4 @@ class Core17InstructionRetrieval(AbsTaskInstructionRetrieval):
       archivePrefix={arXiv},
       primaryClass={cs.IR}
 }""",
-        descriptive_stats={
-            "n_samples": {"eng": 19919 * 2},
-            "test": {
-                "num_docs": 19899,
-                "num_queries": 20,
-                "average_document_length": 2233.0329664807277,
-                "average_query_length": 109.75,
-                "average_instruction_length": 295.55,
-                "average_changed_instruction_length": 355.2,
-                "average_relevant_docs_per_query": 32.7,
-                "average_top_ranked_per_query": 1000.0,
-            },
-        },
     )

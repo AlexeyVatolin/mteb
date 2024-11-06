@@ -24,7 +24,7 @@ class ItalianLinguisticAcceptabilityClassification(AbsTaskClassification):
         domains=["Non-fiction", "Spoken", "Written"],
         dialect=[],
         task_subtypes=["Linguistic acceptability"],
-        license="Unknown",
+        license="not specified",
         annotations_creators="expert-annotated",
         sample_creation="found",
         bibtex_citation="""
@@ -44,10 +44,6 @@ class ItalianLinguisticAcceptabilityClassification(AbsTaskClassification):
     pages = "2929--2940"
 }
         """,
-        descriptive_stats={
-            "n_samples": {"train": 7801, "test": 975},
-            "avg_character_length": {"train": 35.95, "test": 36.67},
-        },
     )
 
     def dataset_transform(self):

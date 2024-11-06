@@ -22,15 +22,12 @@ class RuSciBenchGRNTIClassification(AbsTaskClassification):
         date=("1999-01-01", "2024-01-01"),
         domains=["Academic", "Written"],
         task_subtypes=["Topic classification"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
         bibtex_citation="",
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 890.1},
-        },
+        prompt="Classify the category of scientific papers based on the titles and abstracts",
     )
 
     def dataset_transform(self):

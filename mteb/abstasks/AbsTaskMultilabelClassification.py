@@ -14,9 +14,9 @@ from sklearn.preprocessing import MultiLabelBinarizer
 
 from mteb.encoder_interface import Encoder
 
-from ..evaluation.evaluators.model_encode import model_encode
-from ..load_results.mteb_results import HFSubset, ScoresDict
-from .AbsTask import AbsTask, DescriptiveStatistics
+from ..load_results.task_results import HFSubset, ScoresDict
+from .AbsTask import AbsTask
+from .TaskMetadata import DescriptiveStatistics
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +46,7 @@ class MultilabelClassificationDescriptiveStatistics(DescriptiveStatistics):
 
     Attributes:
         num_samples: number of samples in the dataset.
+        number_of_characters: Total number of symbols in the dataset.
         average_text_length: Average length of text
         average_label_per_text: Average number of labels per text
         unique_labels: Number of unique labels
@@ -53,6 +54,7 @@ class MultilabelClassificationDescriptiveStatistics(DescriptiveStatistics):
     """
 
     num_samples: int
+    number_of_characters: int
     average_text_length: float
     average_label_per_text: float
     unique_labels: int
@@ -69,6 +71,7 @@ class AbsTaskMultilabelClassification(AbsTask):
     """
 
     classifier = KNeighborsClassifier(n_neighbors=5)
+    abstask_prompt = "Classify user passages."
 
     def __init__(
         self,
@@ -162,10 +165,9 @@ class AbsTaskMultilabelClassification(AbsTask):
         unique_train_indices = list(set(itertools.chain.from_iterable(train_samples)))
         unique_train_sentences = train_split.select(unique_train_indices)["text"]
 
-        _unique_train_embeddings = model_encode(
+        _unique_train_embeddings = model.encode(
             unique_train_sentences,
-            model=model,
-            prompt_name=self.metadata.name,
+            task_name=self.metadata.name,
             **encode_kwargs,
         )
         unique_train_embeddings = dict(
@@ -183,8 +185,11 @@ class AbsTaskMultilabelClassification(AbsTask):
         except ValueError:
             logger.warning("Couldn't subsample, continuing with the entire test set.")
 
-        X_test = model_encode(
-            test_text, model=model, prompt_name=self.metadata.name, **encode_kwargs
+        X_test = model.encode(
+            test_text,
+            model=model,
+            task_name=self.metadata.name,
+            **encode_kwargs,
         )
         for i_experiment, sample_indices in enumerate(train_samples):
             logger.info(
@@ -245,6 +250,7 @@ class AbsTaskMultilabelClassification(AbsTask):
         label_count = Counter(total_labels)
         return MultilabelClassificationDescriptiveStatistics(
             average_text_length=total_text_len / len(text),
+            number_of_characters=total_text_len,
             average_label_per_text=total_label_len / len(label),
             num_samples=len(text),
             unique_labels=len(label_count),

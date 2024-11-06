@@ -23,7 +23,7 @@ class STS12STS(AbsTaskSTS):
         date=("2005-01-01", "2012-12-31"),
         domains=["Encyclopaedic", "News", "Written"],
         task_subtypes=[],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -40,15 +40,6 @@ numpages = {9},
 location = {Montr\'{e}al, Canada},
 series = {SemEval '12}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 6216},
-            "test": {
-                "num_samples": 3108,
-                "average_sentence1_len": 63.78893178893179,
-                "average_sentence2_len": 65.5926640926641,
-                "avg_score": 3.5060643500643507,
-            },
-        },
     )
 
     @property

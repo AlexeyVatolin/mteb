@@ -3,8 +3,6 @@ from __future__ import annotations
 from mteb.abstasks.AbsTaskClassification import AbsTaskClassification
 from mteb.abstasks.TaskMetadata import TaskMetadata
 
-N_SAMPLES = 2048
-
 
 class HotelReviewSentimentClassification(AbsTaskClassification):
     metadata = TaskMetadata(
@@ -25,7 +23,7 @@ class HotelReviewSentimentClassification(AbsTaskClassification):
         date=("2016-06-01", "2016-07-31"),
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=["ara-arab-EG", "ara-arab-JO", "ara-arab-LB", "ara-arab-SA"],
         sample_creation="found",
@@ -39,10 +37,6 @@ class HotelReviewSentimentClassification(AbsTaskClassification):
   publisher={Springer}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"train": N_SAMPLES},
-            "avg_character_length": {"train": 137.2},
-        },
     )
 
     def dataset_transform(self):

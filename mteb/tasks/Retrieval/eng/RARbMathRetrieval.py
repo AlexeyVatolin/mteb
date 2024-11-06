@@ -24,7 +24,7 @@ class RARbMath(AbsTaskRetrieval):
         date=("2021-01-01", "2023-12-31"),
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -53,16 +53,5 @@ class RARbMath(AbsTaskRetrieval):
   year={2023}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 6319},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 504.0197829347469,
-                    "average_query_length": 210.30732710871973,
-                    "num_documents": 389376,
-                    "num_queries": 6319,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
+        prompt={"query": "Retrieve the answer for the following math problem."},
     )

@@ -23,7 +23,7 @@ class HateSpeechPortugueseClassification(AbsTaskClassification):
         date=("2017-03-08", "2017-03-09"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -49,10 +49,6 @@ class HateSpeechPortugueseClassification(AbsTaskClassification):
                 pages = "94--104",
             }
         """,
-        descriptive_stats={
-            "n_samples": {"train": 2048},
-            "avg_character_length": {"train": 101.02},
-        },
     )
 
     def dataset_transform(self):

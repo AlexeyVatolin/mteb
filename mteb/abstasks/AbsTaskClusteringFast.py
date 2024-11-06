@@ -4,7 +4,7 @@ import itertools
 import logging
 import random
 from collections import Counter, defaultdict
-from typing import Any, Dict
+from typing import Any
 
 import numpy as np
 import sklearn
@@ -14,14 +14,14 @@ from sklearn.metrics.cluster import v_measure_score
 
 from mteb.encoder_interface import Encoder
 
-from ..evaluation.evaluators.model_encode import model_encode
-from ..load_results.mteb_results import HFSubset
-from .AbsTask import AbsTask, DescriptiveStatistics
+from ..load_results.task_results import HFSubset
+from .AbsTask import AbsTask
+from .TaskMetadata import DescriptiveStatistics
 
 logger = logging.getLogger(__name__)
 
 
-MultilingualDataset = Dict[HFSubset, DatasetDict]
+MultilingualDataset = dict[HFSubset, DatasetDict]
 
 
 def evaluate_clustering_bootstrapped(
@@ -84,6 +84,7 @@ class ClusteringFastDescriptiveStatistics(DescriptiveStatistics):
 
     Attributes:
         num_samples: number of samples in the dataset.
+        number_of_characters: Total number of symbols in the dataset.
         average_text_length: Average length of text
         average_labels_per_text: Average number of labels per text
         unique_labels: Number of unique labels
@@ -91,6 +92,7 @@ class ClusteringFastDescriptiveStatistics(DescriptiveStatistics):
     """
 
     num_samples: int
+    number_of_characters: int
     average_text_length: float
     average_labels_per_text: float
     unique_labels: int
@@ -125,6 +127,7 @@ class AbsTaskClusteringFast(AbsTask):
     n_clusters: int = 10
     k_mean_batch_size: int = 512
     max_depth = None
+    abstask_prompt = "Identify categories in user passages."
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -174,10 +177,9 @@ class AbsTaskClusteringFast(AbsTask):
             )
             downsampled_dataset = dataset.select(example_indices)  # type: ignore
 
-        embeddings = model_encode(
+        embeddings = model.encode(
             downsampled_dataset["sentences"],  # type: ignore
-            model=model,
-            prompt_name=self.metadata.name,
+            task_name=self.metadata.name,
             **encode_kwargs,
         )
 
@@ -234,6 +236,7 @@ class AbsTaskClusteringFast(AbsTask):
         label_counter = Counter(total_labels)
         return ClusteringFastDescriptiveStatistics(
             num_samples=len(sentences),
+            number_of_characters=total_text_len,
             average_text_length=total_text_len / len(sentences),
             average_labels_per_text=len(total_labels) / len(sentences),
             unique_labels=len(label_counter),

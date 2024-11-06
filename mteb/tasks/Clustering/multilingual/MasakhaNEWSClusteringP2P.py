@@ -49,7 +49,7 @@ class MasakhaNEWSClusteringP2P(AbsTaskClustering, MultilingualTask):
         ),  # best guess (not found in paper, dataset or datasheet)
         domains=["News", "Written", "Non-fiction"],
         task_subtypes=["Thematic clustering"],
-        license="AFL-3.0",
+        license="afl-3.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -60,7 +60,6 @@ class MasakhaNEWSClusteringP2P(AbsTaskClustering, MultilingualTask):
   year={2023},
   volume={}
 }""",
-        descriptive_stats={"n_samples": None, "avg_character_length": None},
     )
 
     def load_data(self, **kwargs):

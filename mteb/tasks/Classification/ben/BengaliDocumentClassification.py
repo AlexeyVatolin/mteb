@@ -23,7 +23,7 @@ class BengaliDocumentClassification(AbsTaskClassification):
         dialect=[],
         domains=["News", "Written"],
         task_subtypes=[],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="derived",
         sample_creation="found",
         bibtex_citation="""
@@ -42,10 +42,6 @@ class BengaliDocumentClassification(AbsTaskClassification):
             pages = "52--67"
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 1658.1},
-        },
     )
 
     def dataset_transform(self) -> None:

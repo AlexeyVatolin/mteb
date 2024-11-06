@@ -23,7 +23,7 @@ class AILAStatutes(AbsTaskRetrieval):
         date=None,
         domains=["Legal", "Written"],
         task_subtypes=["Article retrieval"],
-        license="CC BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="derived",
         dialect=None,
         sample_creation="found",
@@ -42,16 +42,4 @@ class AILAStatutes(AbsTaskRetrieval):
   doi          = {10.5281/zenodo.4063986},
   url          = {https://doi.org/10.5281/zenodo.4063986}
 }""",
-        descriptive_stats={
-            "n_samples": None,
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 1973.6341463414635,
-                    "average_query_length": 3038.42,
-                    "num_documents": 82,
-                    "num_queries": 50,
-                    "average_relevant_docs_per_query": 4.34,
-                }
-            },
-        },
     )

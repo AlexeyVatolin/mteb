@@ -116,7 +116,7 @@ class IndicGenBenchFloresBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2023-10-01", "2024-05-01"),
         domains=["Web", "News", "Written"],
         task_subtypes=[],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="human-translated and localized",
@@ -128,10 +128,6 @@ class IndicGenBenchFloresBitextMining(AbsTaskBitextMining, MultilingualTask):
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }""",
-        descriptive_stats={
-            "n_samples": {"validation": 997, "test": 1012},
-            "avg_character_length": {"validation": 126.25, "test": 130.84},
-        },
     )
 
     def load_data(self, **kwargs: Any) -> None:

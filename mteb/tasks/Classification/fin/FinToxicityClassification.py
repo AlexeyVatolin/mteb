@@ -26,7 +26,7 @@ class FinToxicityClassification(AbsTaskClassification):
         date=("2023-03-13", "2023-09-25"),
         domains=["News", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="ccy-by-sa-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="machine-translated",
@@ -42,10 +42,6 @@ class FinToxicityClassification(AbsTaskClassification):
             month = may,
             year = "2023",
         }""",
-        descriptive_stats={
-            "n_samples": {"train": 2048, "test": 2048},
-            "avg_character_length": {"train": 432.63, "test": 401.03},
-        },
     )
 
     def dataset_transform(self):

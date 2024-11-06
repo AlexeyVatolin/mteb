@@ -22,7 +22,7 @@ class LccSentimentClassification(AbsTaskClassification):
         date=("2006-01-01", "2006-12-31"),
         domains=["News", "Web", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC-BY-4.0",
+        license="cc-by-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -46,10 +46,7 @@ class LccSentimentClassification(AbsTaskClassification):
     url = "http://www.lrec-conf.org/proceedings/lrec2006/pdf/641_pdf.pdf",
     abstract = "A simple and flexible schema for storing and presenting monolingual language resources is proposed. In this format, data for 18 different languages is already available in various sizes. The data is provided free of charge for online use and download. The main target is to ease the application of algorithms for monolingual and interlingual studies.",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 150},
-            "avg_character_length": {"test": 118.7},
-        },
+        prompt="Classify texts based on sentiment",
     )
 
     @property

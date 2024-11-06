@@ -23,7 +23,7 @@ class ArxivClassification(AbsTaskClassification):
         date=("1998-11-11", "2019-03-28"),
         domains=["Academic", "Written"],
         task_subtypes=["Topic classification"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -37,5 +37,4 @@ class ArxivClassification(AbsTaskClassification):
         pages={40707-40718},
         doi={10.1109/ACCESS.2019.2907992}
         }""",
-        descriptive_stats={"n_samples": {"test": 2048}, "avg_character_length": {}},
     )

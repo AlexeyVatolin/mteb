@@ -31,7 +31,7 @@ class SNLHierarchicalClusteringP2P(AbsTaskClusteringFast):
         main_score="v_measure",
         date=("2020-01-01", "2024-12-31"),  # best guess
         domains=["Encyclopaedic", "Non-fiction", "Written"],
-        license="CC-BY-NC",
+        license="cc-by-nc-4.0",  # version assumed (not specified beforehand)
         annotations_creators="derived",
         dialect=[],
         task_subtypes=["Thematic clustering"],
@@ -42,10 +42,7 @@ class SNLHierarchicalClusteringP2P(AbsTaskClusteringFast):
   year={2023},
   school={Norwegian University of Life Sciences, {\AA}s}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1300},
-            "avg_character_length": {"test": 1986.9453846153847},
-        },
+        prompt="Identify categories in a Norwegian lexicon",
     )
     max_depth = 5
 
@@ -76,7 +73,7 @@ class SNLHierarchicalClusteringS2S(AbsTaskClusteringFast):
         main_score="v_measure",
         date=("2020-01-01", "2024-12-31"),  # best guess
         domains=["Encyclopaedic", "Non-fiction", "Written"],
-        license="CC-BY-NC",
+        license="cc-by-nc-4.0",  # version assumed (not specified beforehand)
         annotations_creators="derived",
         dialect=[],
         task_subtypes=["Thematic clustering"],
@@ -87,10 +84,7 @@ class SNLHierarchicalClusteringS2S(AbsTaskClusteringFast):
   year={2023},
   school={Norwegian University of Life Sciences, {\AA}s}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1300},
-            "avg_character_length": {"test": 242.22384615384615},
-        },
+        prompt="Identify categories in a Norwegian lexicon",
     )
     max_depth = 5
 

@@ -28,7 +28,7 @@ class EstQA(AbsTaskRetrieval):
         ),  # birth of Estonian Wikipedia to publishing the article
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Question answering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -40,16 +40,4 @@ class EstQA(AbsTaskRetrieval):
   year         = 2021
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 603},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 785.595041322314,
-                    "average_query_length": 55.32006633499171,
-                    "num_documents": 121,
-                    "num_queries": 603,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
     )

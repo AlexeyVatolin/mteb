@@ -22,7 +22,7 @@ class CzechSubjectivityClassification(AbsTaskClassification):
         main_score="accuracy",
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -39,8 +39,4 @@ class CzechSubjectivityClassification(AbsTaskClassification):
     pages = "1381--1391",
 }
 """,
-        descriptive_stats={
-            "n_samples": {"validation": 500, "test": 2000},
-            "avg_character_length": {"validation": 108.2, "test": 108.3},
-        },
     )

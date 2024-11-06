@@ -25,7 +25,7 @@ class AlloprofReranking(AbsTaskReranking):
         date=("2020-01-01", "2023-04-14"),  # supposition
         domains=["Web", "Academic", "Written"],
         task_subtypes=None,
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=None,
         sample_creation="found",
@@ -39,10 +39,6 @@ class AlloprofReranking(AbsTaskReranking):
             year = {2023},
             copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International}
             }""",
-        descriptive_stats={
-            "n_samples": {"test": 2316, "train": 9264},
-            "avg_character_length": None,
-        },
     )
 
     def load_data(self, **kwargs):

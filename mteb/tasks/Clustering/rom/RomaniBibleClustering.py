@@ -22,13 +22,9 @@ class RomaniBibleClustering(AbsTaskClustering):
         date=("2020-01-01", "2020-12-31"),
         domains=["Religious", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=["Kalderash"],
         sample_creation="human-translated and localized",
         bibtex_citation=None,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 132.2},
-        },
     )

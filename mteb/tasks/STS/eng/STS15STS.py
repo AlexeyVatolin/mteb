@@ -23,7 +23,7 @@ class STS15STS(AbsTaskSTS):
         date=("2008-01-01", "2014-07-28"),
         domains=["Blog", "News", "Web", "Written", "Spoken"],
         task_subtypes=[],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -43,10 +43,6 @@ class STS15STS(AbsTaskSTS):
     doi = "10.18653/v1/S15-2010",
     pages = "56--63",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 6000},
-            "avg_character_length": {"test": 57.7},
-        },
     )
 
     @property

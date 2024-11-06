@@ -23,7 +23,7 @@ class STS13STS(AbsTaskSTS):
         date=("2012-01-01", "2012-12-31"),
         domains=["Web", "News", "Non-fiction", "Written"],
         task_subtypes=[],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -34,10 +34,6 @@ class STS13STS(AbsTaskSTS):
   year={2013},
   url={https://api.semanticscholar.org/CorpusID:10241043}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 3000},
-            "avg_character_length": {"test": 54.0},
-        },
     )
 
     @property

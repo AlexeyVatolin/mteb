@@ -23,7 +23,7 @@ class SwahiliNewsClassification(AbsTaskClassification):
         dialect=[],
         domains=["News", "Written"],
         task_subtypes=[],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="derived",
         sample_creation="found",
         bibtex_citation="""
@@ -36,10 +36,6 @@ class SwahiliNewsClassification(AbsTaskClassification):
         url = "https://doi.org/10.5281/zenodo.5514203"
         }
         """,
-        descriptive_stats={
-            "n_samples": {"train": 2048},
-            "avg_character_length": {"train": 2438.2308135942326},
-        },
     )
 
     def dataset_transform(self) -> None:

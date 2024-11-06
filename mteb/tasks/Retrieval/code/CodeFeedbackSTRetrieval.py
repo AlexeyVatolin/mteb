@@ -24,7 +24,7 @@ class CodeFeedbackST(AbsTaskRetrieval):
         date=("2019-01-01", "2019-12-31"),
         domains=["Programming", "Written"],
         task_subtypes=["Code retrieval"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -37,18 +37,4 @@ class CodeFeedbackST(AbsTaskRetrieval):
         primaryClass={cs.IR},
         url={https://arxiv.org/abs/2407.02883},
         }""",
-        descriptive_stats={
-            "n_samples": {
-                _EVAL_SPLIT: 1000,
-            },
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 1521.3317148588733,
-                    "average_query_length": 724.2441704465598,
-                    "num_documents": 156526,
-                    "num_queries": 31306,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
     )

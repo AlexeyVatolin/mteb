@@ -24,7 +24,7 @@ class Quail(AbsTaskRetrieval):
         date=("2020-01-01", "2020-12-31"),
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -44,16 +44,7 @@ class Quail(AbsTaskRetrieval):
   year={2020}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 2720},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 27.50788422240522,
-                    "average_query_length": 1957.3632352941177,
-                    "num_documents": 32787,
-                    "num_queries": 2720,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
+        prompt={
+            "query": "Given the following context and question, retrieve the correct answer."
         },
     )

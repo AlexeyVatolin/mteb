@@ -22,7 +22,7 @@ class AJGT(AbsTaskClassification):
         date=("2021-01-01", "2022-01-25"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="AFL",
+        license="afl-3.0",
         annotations_creators="human-annotated",
         dialect=["ara-arab-MSA", "ara-arab-JO"],
         sample_creation="found",
@@ -36,8 +36,4 @@ class AJGT(AbsTaskClassification):
   organization={Springer}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"train": 1800},
-            "avg_character_length": {"train": 46.81},
-        },
     )

@@ -22,15 +22,11 @@ class TeluguAndhraJyotiNewsClassification(AbsTaskClassification):
         main_score="f1",
         domains=["News", "Written"],
         task_subtypes=["Topic classification"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
         bibtex_citation="",
-        descriptive_stats={
-            "n_samples": {"test": 4329},
-            "avg_character_length": {"test": 1428.28},
-        },
     )
 
     def dataset_transform(self):

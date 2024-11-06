@@ -26,7 +26,7 @@ class DanishPoliticalCommentsClassification(AbsTaskClassification):
         ),  # Estimated range for the collection of comments
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -36,10 +36,7 @@ class DanishPoliticalCommentsClassification(AbsTaskClassification):
   year={2019},
   institution={IT University of Copenhagen},
 }""",
-        descriptive_stats={
-            "n_samples": {"train": 9010},
-            "avg_character_length": {"train": 69.9},
-        },
+        prompt="Classify Danish political comments for sentiment",
     )
 
     @property

@@ -24,7 +24,7 @@ class TempReasonL3Context(AbsTaskRetrieval):
         date=("2023-01-01", "2023-12-31"),
         domains=["Encyclopaedic", "Written"],
         task_subtypes=["Reasoning as Retrieval"],
-        license="CC BY-SA 3.0",
+        license="cc-by-sa-3.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -41,16 +41,7 @@ class TempReasonL3Context(AbsTaskRetrieval):
   year={2023}
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 4426},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 19.80534984678243,
-                    "average_query_length": 13424.633077270673,
-                    "num_documents": 15664,
-                    "num_queries": 4426,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
+        prompt={
+            "query": "Given the following question, facts and contexts, retrieve the correct answer."
         },
     )

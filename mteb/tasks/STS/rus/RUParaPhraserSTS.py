@@ -23,7 +23,7 @@ class RUParaPhraserSTS(AbsTaskSTS):
         date=("2009-01-01", "2019-01-01"),  # rough estimate,
         domains=["News", "Written"],
         task_subtypes=[],
-        license="MIT",
+        license="mit",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -51,10 +51,6 @@ class RUParaPhraserSTS(AbsTaskSTS):
           organization={Springer}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 1924},
-            "avg_character_length": {"test": 61.25},
-        },
     )
 
     @property

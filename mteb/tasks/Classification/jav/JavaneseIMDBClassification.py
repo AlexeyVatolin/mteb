@@ -23,7 +23,7 @@ class JavaneseIMDBClassification(AbsTaskClassification):
         main_score="accuracy",
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="MIT",
+        license="mit",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -37,10 +37,6 @@ class JavaneseIMDBClassification(AbsTaskClassification):
             organization={IEEE}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 25_000},
-            "avg_character_length": {"test": 481.83},
-        },
     )
 
     def dataset_transform(self):

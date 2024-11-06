@@ -50,10 +50,7 @@ class RedditClusteringP2P(AbsTaskClustering):
         archivePrefix = {arXiv},
         eprint    = {2104.07081}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 459399},
-            "avg_character_length": {"test": 727.7},
-        },
+        prompt="Identify the topic or theme of Reddit posts based on the titles and posts",
     )
 
 
@@ -75,7 +72,7 @@ class RedditFastClusteringP2P(AbsTaskClusteringFast):
         date=("2021-01-01", "2021-04-14"),
         domains=["Web", "Social", "Written"],
         task_subtypes=["Thematic clustering"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -92,10 +89,7 @@ class RedditFastClusteringP2P(AbsTaskClusteringFast):
         archivePrefix = {arXiv},
         eprint    = {2104.07081}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 18375},
-            "avg_character_length": {"test": 727.7},
-        },
+        prompt="Identify the topic or theme of Reddit posts based on the titles and posts",
     )
 
     def dataset_transform(self):

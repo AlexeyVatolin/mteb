@@ -23,7 +23,7 @@ class STS16STS(AbsTaskSTS):
         date=("2015-10-01", "2015-12-31"),
         domains=["Blog", "Web", "Spoken"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -49,10 +49,6 @@ class STS16STS(AbsTaskSTS):
     doi = "10.18653/v1/S16-1001",
     pages = "1--18",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 2372},
-            "avg_character_length": {"test": 65.3},
-        },
     )
 
     @property

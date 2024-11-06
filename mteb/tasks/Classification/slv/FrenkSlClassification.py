@@ -23,7 +23,7 @@ class FrenkSlClassification(AbsTaskClassification):
         date=("2021-05-28", "2021-05-28"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -36,10 +36,6 @@ class FrenkSlClassification(AbsTaskClassification):
         primaryClass={cs.CL},
         url={https://arxiv.org/abs/1906.02045}
         }""",
-        descriptive_stats={
-            "n_samples": {"test": 2177},
-            "avg_character_length": {"test": 136.61},
-        },
     )
 
     def dataset_transform(self):

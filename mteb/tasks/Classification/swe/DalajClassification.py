@@ -25,7 +25,7 @@ class DalajClassification(AbsTaskClassification):
         date=("2017-01-01", "2020-12-31"),
         domains=["Non-fiction", "Written"],
         task_subtypes=["Linguistic acceptability"],
-        license="CC-BY-4.0",
+        license="cc-by-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="created",
@@ -35,10 +35,7 @@ Title = {DaLAJ - a dataset for linguistic acceptability judgments for Swedish: F
 Year = {2021},
 Eprint = {arXiv:2105.06681},
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 444},
-            "avg_character_length": {"test": 243.8},
-        },
+        prompt="Classify texts based on linguistic acceptability in Swedish",
     )
 
     @property

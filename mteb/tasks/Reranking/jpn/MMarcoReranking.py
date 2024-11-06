@@ -22,20 +22,17 @@ class VoyageMMarcoReranking(AbsTaskReranking):
         date=("2016-12-01", "2023-12-23"),
         domains=["Academic", "Non-fiction", "Written"],
         task_subtypes=["Scientific Reranking"],
-        license="CC BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="derived",
         dialect=["jpn-Jpan"],
         sample_creation="found",
+        prompt="Given a Japanese search query, retrieve web passages that answer the question",
         bibtex_citation="""@misc{clavié2023jacolbert,
       title={JaColBERT and Hard Negatives, Towards Better Japanese-First Embeddings for Retrieval: Early Technical Report}, 
       author={Benjamin Clavié},
       year={2023},
       eprint={2312.16144},
       archivePrefix={arXiv},}""",
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 162},
-        },
     )
 
     def dataset_transform(self):

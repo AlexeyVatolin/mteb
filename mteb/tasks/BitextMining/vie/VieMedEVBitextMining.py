@@ -29,7 +29,7 @@ class VieMedEVBitextMining(AbsTaskBitextMining):
         date=("2024-08-28", "2022-03-28"),
         domains=["Medical", "Written"],
         task_subtypes=[],
-        license="cc-by-nc",
+        license="cc-by-nc-4.0",  # version is assumed, but was previously unspecified
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="human-translated and localized",
@@ -39,10 +39,6 @@ class VieMedEVBitextMining(AbsTaskBitextMining):
     booktitle = {Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING)},
     year      = {2024}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": TEST_SAMPLES},
-            "avg_character_length": {"test": 139.23},
-        },
     )
 
     def dataset_transform(self):

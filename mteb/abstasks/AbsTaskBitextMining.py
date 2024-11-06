@@ -8,8 +8,9 @@ from datasets import Dataset
 from mteb.encoder_interface import Encoder
 
 from ..evaluation.evaluators import BitextMiningEvaluator
-from ..load_results.mteb_results import HFSubset, ScoresDict
-from .AbsTask import AbsTask, DescriptiveStatistics
+from ..load_results.task_results import HFSubset, ScoresDict
+from .AbsTask import AbsTask
+from .TaskMetadata import DescriptiveStatistics
 
 logger = logging.getLogger(__name__)
 
@@ -19,11 +20,13 @@ class BitextDescriptiveStatistics(DescriptiveStatistics):
 
     Attributes:
         num_samples: number of samples in the dataset.
+        number_of_characters: Total number of symbols in the dataset.
         average_sentence1_length: Average length of sentence1
         average_sentence2_length: Average length of sentence2
     """
 
     num_samples: int
+    number_of_characters: int
     average_sentence1_length: float
     average_sentence2_length: float
 
@@ -32,13 +35,14 @@ class AbsTaskBitextMining(AbsTask):
     """Abstract class for BitextMining tasks
     The similarity is computed between pairs and the results are ranked.
 
-    self.load_data() must generate a huggingface dataset with a split matching self.metadata_dict["eval_splits"], and assign it to self.dataset. It must contain the following columns:
+    self.load_data() must generate a huggingface dataset with a split matching self.metadata.eval_splits, and assign it to self.dataset. It must contain the following columns:
         id: str
         sentence1: str
         sentence2: str
     """
 
     parallel_subsets = False
+    abstask_prompt = "Retrieve parallel sentences."
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -156,4 +160,5 @@ class AbsTaskBitextMining(AbsTask):
             average_sentence1_length=total_s1_len / len(sentence1),
             average_sentence2_length=total_s2_len / len(sentence2),
             num_samples=len(sentence1),
+            number_of_characters=total_s1_len + total_s2_len,
         )

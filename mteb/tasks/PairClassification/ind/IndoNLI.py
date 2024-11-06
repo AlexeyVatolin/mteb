@@ -23,7 +23,7 @@ class IndoNLI(AbsTaskPairClassification):
         date=("2021-01-01", "2021-11-01"),  # best guess
         domains=["Encyclopaedic", "Web", "News", "Written"],
         task_subtypes=["Textual Entailment"],
-        license="CC-BY-SA 4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -39,10 +39,6 @@ class IndoNLI(AbsTaskPairClassification):
             pages = "10511--10527",
         }""",
         # after removing neutral
-        descriptive_stats={
-            "n_samples": {"test_expert": 2040},
-            "avg_character_length": {"test_expert": 145.88},
-        },
     )
 
     def dataset_transform(self):

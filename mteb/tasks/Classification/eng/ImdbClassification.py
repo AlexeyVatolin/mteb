@@ -25,7 +25,7 @@ class ImdbClassification(AbsTaskClassification):
         ),  # Estimated range for the collection of movie reviews
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -48,8 +48,5 @@ class ImdbClassification(AbsTaskClassification):
     url = "https://aclanthology.org/P11-1015",
     pages = "142--150",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 25000},
-            "avg_character_length": {"test": 1293.8},
-        },
+        prompt="Classify the sentiment expressed in the given movie review text from the IMDB dataset",
     )

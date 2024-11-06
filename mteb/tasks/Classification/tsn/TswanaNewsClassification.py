@@ -22,7 +22,7 @@ class TswanaNewsClassification(AbsTaskClassification):
         main_score="accuracy",
         date=("2015-01-01", "2023-01-01"),
         domains=["News", "Written"],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -38,8 +38,4 @@ class TswanaNewsClassification(AbsTaskClassification):
             software_url = {https://huggingface.co/dsfsi/PuoBERTa}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"validation": 487, "test": 487},
-            "avg_character_length": {"validation": 2417.72, "test": 2369.52},
-        },
     )

@@ -22,7 +22,7 @@ class TweetSarcasmClassification(AbsTaskClassification):
         date=("2020-01-01", "2021-01-01"),
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="MIT",
+        license="mit",
         annotations_creators="human-annotated",
         dialect=["ara-arab-EG", "ara-arab-LB", "ara-arab-MA", "ara-arab-SA"],
         sample_creation="found",
@@ -48,10 +48,6 @@ class TweetSarcasmClassification(AbsTaskClassification):
     ISBN = "979-10-95546-51-1",
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 2110},
-            "avg_character_length": {"test": 102.1},
-        },
     )
 
     def dataset_transform(self):

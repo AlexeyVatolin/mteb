@@ -28,7 +28,7 @@ class TweetTopicSingleClassification(AbsTaskClassification):
         date=("2019-09-01", "2021-08-31"),
         domains=["Social", "News", "Written"],
         task_subtypes=["Topic classification"],
-        license="Other",
+        license="not specified",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -48,10 +48,6 @@ class TweetTopicSingleClassification(AbsTaskClassification):
             publisher = "International Committee on Computational Linguistics"
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test_2021": 1693},
-            "avg_character_length": {"test_2021": 167.66},
-        },
     )
 
     def dataset_transform(self):

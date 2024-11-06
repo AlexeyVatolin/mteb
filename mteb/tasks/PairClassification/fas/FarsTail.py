@@ -24,7 +24,7 @@ class FarsTail(AbsTaskPairClassification):
         date=("2021-01-01", "2021-07-12"),  # best guess
         domains=["Academic", "Written"],
         task_subtypes=["Textual Entailment"],
-        license="Not specified",
+        license="not specified",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -36,10 +36,6 @@ class FarsTail(AbsTaskPairClassification):
         publisher={Springer},
         doi={10.1007/s00500-023-08959-3}
         }""",  # after removing neutral
-        descriptive_stats={
-            "n_samples": {"test": 1029},
-            "avg_character_length": {"test": 125.84},
-        },
     )
 
     def load_data(self, **kwargs):

@@ -23,7 +23,7 @@ class CTKFactsNLI(AbsTaskPairClassification):
         date=("2020-09-01", "2021-08-31"),  # academic year 2020/2021
         domains=["News", "Written"],
         task_subtypes=["Claim verification"],
-        license="CC-BY-SA-3.0",
+        license="cc-by-sa-3.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -37,13 +37,6 @@ class CTKFactsNLI(AbsTaskPairClassification):
         year={2023},
         publisher={Springer}
         }""",  # after removing label 1=NOT ENOUGH INFO
-        descriptive_stats={
-            "n_samples": {
-                "test": 375,
-                "validation": 305,
-            },
-            "avg_character_length": {"test": 225.62, "validation": 219.32},
-        },
     )
 
     def dataset_transform(self):

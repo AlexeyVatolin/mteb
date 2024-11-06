@@ -23,7 +23,7 @@ class CzechSoMeSentimentClassification(AbsTaskClassification):
         dialect=[],
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC BY-NC-SA 4.0",
+        license="cc-by-nc-sa-4.0",
         annotations_creators="derived",
         sample_creation="found",
         bibtex_citation="""
@@ -44,10 +44,6 @@ class CzechSoMeSentimentClassification(AbsTaskClassification):
             pages = "65--74",
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 1000},
-            "avg_character_length": {"test": 59.89},
-        },
     )
 
     @property

@@ -23,7 +23,7 @@ class BengaliSentimentAnalysis(AbsTaskClassification):
         dialect=[],
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="human-annotated",
         sample_creation="found",
         bibtex_citation="""@inproceedings{sazzed2020cross,
@@ -33,10 +33,6 @@ class BengaliSentimentAnalysis(AbsTaskClassification):
         pages={50--60},
         year={2020}
         }""",
-        descriptive_stats={
-            "n_samples": {"train": 11807},
-            "avg_character_length": {"train": 69.66},
-        },
     )
 
     def dataset_transform(self):

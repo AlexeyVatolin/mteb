@@ -23,7 +23,7 @@ class ItaCaseholdClassification(AbsTaskClassification):
         domains=["Legal", "Government", "Written"],
         dialect=[],
         task_subtypes=[],
-        license="Apache 2.0",
+        license="apache-2.0",
         annotations_creators="expert-annotated",
         sample_creation="found",
         bibtex_citation="""
@@ -45,10 +45,6 @@ class ItaCaseholdClassification(AbsTaskClassification):
             series = {ICAIL '23}
             }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 221},
-            "avg_character_length": {"test": 4207.9},
-        },
     )
 
     def dataset_transform(self):

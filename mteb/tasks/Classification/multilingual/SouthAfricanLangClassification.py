@@ -36,7 +36,7 @@ class SouthAfricanLangClassification(AbsTaskClassification):
         date=("2010-01-01", "2023-01-01"),
         domains=["Web", "Non-fiction", "Written"],
         task_subtypes=["Language identification"],
-        license="MIT",
+        license="mit",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -47,10 +47,6 @@ class SouthAfricanLangClassification(AbsTaskClassification):
     year = {2022},
     url = {https://kaggle.com/competitions/south-african-language-identification}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 247.49},
-        },
     )
 
     def dataset_transform(self) -> None:

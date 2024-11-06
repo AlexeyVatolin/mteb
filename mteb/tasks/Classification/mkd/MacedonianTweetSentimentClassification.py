@@ -22,7 +22,7 @@ class MacedonianTweetSentimentClassification(AbsTaskClassification):
         main_score="accuracy",
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC BY-NC-SA 3.0",
+        license="cc-by-nc-sa-3.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -42,8 +42,4 @@ class MacedonianTweetSentimentClassification(AbsTaskClassification):
     url = "https://aclanthology.org/R15-1034",
     pages = "249--257",
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1139},
-            "avg_character_length": {"test": 67.6},
-        },
     )

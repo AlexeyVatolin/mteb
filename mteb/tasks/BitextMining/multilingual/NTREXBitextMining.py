@@ -266,14 +266,10 @@ class NTREXBitextMining(AbsTaskBitextMining, MultilingualTask):
         date=("2019-08-01", "2022-11-01"),
         domains=["News", "Written"],
         task_subtypes=[],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="human-translated and localized",
-        descriptive_stats={
-            "n_samples": {"test": _N * len(_EVAL_LANGS)},
-            "avg_character_length": {"test": 120},
-        },
         bibtex_citation="""
 @inproceedings{federmann-etal-2022-ntrex,
     title = "{NTREX}-128 {--} News Test References for {MT} Evaluation of 128 Languages",

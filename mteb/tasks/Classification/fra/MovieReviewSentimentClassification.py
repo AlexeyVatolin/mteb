@@ -3,8 +3,6 @@ from __future__ import annotations
 from mteb.abstasks.AbsTaskClassification import AbsTaskClassification
 from mteb.abstasks.TaskMetadata import TaskMetadata
 
-N_SAMPLES = 1024
-
 
 class MovieReviewSentimentClassification(AbsTaskClassification):
     metadata = TaskMetadata(
@@ -24,7 +22,7 @@ class MovieReviewSentimentClassification(AbsTaskClassification):
         date=("2006-01-01", "2020-01-01"),
         domains=["Reviews", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="MIT",
+        license="mit",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -36,10 +34,6 @@ class MovieReviewSentimentClassification(AbsTaskClassification):
   year = {2020},
 }
 """,
-        descriptive_stats={
-            "n_samples": {"validation": N_SAMPLES, "test": N_SAMPLES},
-            "avg_character_length": {"validation": 550.3, "test": 558.1},
-        },
     )
 
     def dataset_transform(self):

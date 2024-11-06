@@ -27,7 +27,7 @@ class KorFin(AbsTaskClassification):
         ),  # Assumed date based on the citations in the paper
         domains=["News", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC BY-SA 4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -39,10 +39,6 @@ class KorFin(AbsTaskClassification):
         year={2023}
         }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 2048},
-            "avg_character_length": {"test": 75.28},
-        },
     )
 
     def dataset_transform(self):

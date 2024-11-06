@@ -25,7 +25,7 @@ class FeedbackQARetrieval(AbsTaskRetrieval):
         date=("2020-01-01", "2022-04-01"),
         domains=["Web", "Government", "Medical", "Written"],
         task_subtypes=["Question answering"],
-        license="Apache-2.0",
+        license="apache-2.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="created",
@@ -50,16 +50,4 @@ class FeedbackQARetrieval(AbsTaskRetrieval):
     pages = "926--937"
 }
 """,
-        descriptive_stats={
-            "n_samples": {"test": 1992},
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 1174.7986463620982,
-                    "average_query_length": 72.33182730923694,
-                    "num_documents": 2364,
-                    "num_queries": 1992,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
     )

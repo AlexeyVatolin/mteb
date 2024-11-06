@@ -25,7 +25,7 @@ class ToxicConversationsClassification(AbsTaskClassification):
         ),  # Estimated range for the collection of comments
         domains=["Social", "Written"],
         task_subtypes=["Sentiment/Hate speech"],
-        license="CC BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -36,10 +36,7 @@ class ToxicConversationsClassification(AbsTaskClassification):
     year = {2019},
     url = {https://kaggle.com/competitions/jigsaw-unintended-bias-in-toxicity-classification}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 50000},
-            "avg_character_length": {"test": 296.6},
-        },
+        prompt="Classify the given comments as either toxic or not toxic",
     )
 
     @property

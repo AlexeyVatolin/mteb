@@ -30,7 +30,7 @@ class HunSum2AbstractiveRetrieval(AbsTaskRetrieval):
         ),
         domains=["News", "Written"],
         task_subtypes=["Article retrieval"],
-        license="CC-BY 4.0",
+        license="cc-by-4.0",
         annotations_creators="derived",
         dialect=[],
         sample_creation="found",
@@ -44,20 +44,6 @@ class HunSum2AbstractiveRetrieval(AbsTaskRetrieval):
       primaryClass={cs.CL}
 }
 """,
-        descriptive_stats={
-            "n_samples": {
-                "test": 1998,
-            },
-            "avg_character_length": {
-                "test": {
-                    "average_document_length": 2511.0315315315315,
-                    "average_query_length": 201.2112112112112,
-                    "num_documents": 1998,
-                    "num_queries": 1998,
-                    "average_relevant_docs_per_query": 1.0,
-                }
-            },
-        },
     )
 
     def load_data(self, **kwargs):

@@ -81,7 +81,7 @@ class IN22GenBitextMining(AbsTaskBitextMining, MultilingualTask):
             "Written",
         ],
         task_subtypes=[],
-        license="CC-BY-4.0",
+        license="cc-by-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="created",
@@ -94,10 +94,6 @@ year={2023},
 url={https://openreview.net/forum?id=vfT4YuzAYA},
 note={}
 }""",
-        descriptive_stats={
-            "n_samples": {"test": 1024},
-            "avg_character_length": {"test": 156.7},
-        },
     )
 
     def load_data(self, **kwargs: Any) -> None:

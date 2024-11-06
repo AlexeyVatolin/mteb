@@ -20,7 +20,7 @@ class FilipinoShopeeReviewsClassification(AbsTaskClassification):
         eval_splits=["validation", "test"],
         eval_langs=["fil-Latn"],
         domains=["Social", "Written"],
-        license="MPL-2.0",
+        license="mpl-2.0",
         annotations_creators="human-annotated",
         dialect=[],
         sample_creation="found",
@@ -35,10 +35,6 @@ class FilipinoShopeeReviewsClassification(AbsTaskClassification):
             issue={08},
             pages={72--82}
         }""",
-        descriptive_stats={
-            "n_samples": {"validation": 2250, "test": 2250},
-            "avg_character_length": {"validation": 143.8, "test": 145.1},
-        },
     )
 
     def dataset_transform(self):

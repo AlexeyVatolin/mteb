@@ -46,7 +46,7 @@ class HinDialectClassification(AbsTaskClassification):
         date=("2010-01-01", "2023-01-01"),
         domains=["Social", "Spoken", "Written"],
         task_subtypes=["Language identification"],
-        license="CC-BY-SA-4.0",
+        license="cc-by-sa-4.0",
         annotations_creators="expert-annotated",
         dialect=[],
         sample_creation="found",
@@ -59,10 +59,6 @@ class HinDialectClassification(AbsTaskClassification):
         copyright = {Creative Commons - Attribution-{NonCommercial}-{ShareAlike} 4.0 International ({CC} {BY}-{NC}-{SA} 4.0)},
         year = {2022} }
         """,
-        descriptive_stats={
-            "n_samples": {"test": 1152},
-            "avg_character_length": {"test": 583.82},
-        },
     )
 
     def dataset_transform(self) -> None:
